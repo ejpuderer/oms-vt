@@ -1,0 +1,17 @@
+mat-toolbar {
+  display: flex;
+}
+
+#titleName {
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
+#titleLinks {
+  flex-grow: 3;
+}
+
+#titleLogin {
+  flex-grow: 1 100%;
+  justify-content: flex-end;
+}

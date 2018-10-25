@@ -1,0 +1,42 @@
+<mat-toolbar color="dark">
+    <div id="titleName" >
+      <button mat-button [matMenuTriggerFor]="oms">Online Material Sourcing</button>
+    </div>
+
+    <div id="titleLinks">
+      <button mat-button [matMenuTriggerFor]="menu">About Us</button>
+      <button mat-button [routerLink]="['/e-commerce']">E-Commerce</button>
+      <button mat-button [routerLink]="['/blog']">Blog</button>
+      <button mat-button [routerLink]="['/careers']">Careers</button>
+      <button mat-button [routerLink]="['/apps']">Apps</button>
+      <button mat-button [matMenuTriggerFor]="support">Support</button>
+    </div>
+
+    <div id="titleLogin">
+        <button mat-button [routerLink]="['/members']">Sign In</button>
+    </div>
+</mat-toolbar>
+
+<mat-menu #oms="matMenu">
+    <button mat-menu-item [routerLink]="['/home']">Home</button>
+    <button mat-menu-item [routerLink]="['/home/overview']">Overview</button>
+    <button mat-menu-item [routerLink]="['/home/how-it-works']">How It Works</button>
+    <button mat-menu-item [routerLink]="['/home/growth']">Growth</button>
+    <button mat-menu-item [routerLink]="['/home/roadmap']">Roadmap</button>
+  </mat-menu>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/about-us']">About US</button>
+  <button mat-menu-item [routerLink]="['/about-us/company']">Company</button>
+  <button mat-menu-item [routerLink]="['/about-us/team']">Team</button>
+  <button mat-menu-item [routerLink]="['/about-us/advisors']">Advisors</button>
+  <button mat-menu-item [routerLink]="['/about-us/partners']">Partners</button>
+  <button mat-menu-item [routerLink]="['/about-us/light-paper']">Light Paper</button>
+</mat-menu>
+
+<mat-menu #support="matMenu">
+  <button mat-menu-item [routerLink]="['/support']">Support</button>
+  <button mat-menu-item [routerLink]="['/support/faqs']">FAQs</button>
+  <button mat-menu-item [routerLink]="['/support/privacy']">Privacy Policy</button>
+  <button mat-menu-item [routerLink]="['/support/tandc']">Terms & Conditions</button>
+</mat-menu>

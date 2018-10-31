@@ -2,6 +2,10 @@ mat-toolbar {
   display: flex;
 }
 
+mat-toolbar div {
+  display: flex;
+}
+
 #titleName {
   flex-grow: 1;
   justify-content: flex-start;
@@ -9,9 +13,10 @@ mat-toolbar {
 
 #titleLinks {
   flex-grow: 3;
+  justify-content: space-evenly;
 }
 
 #titleLogin {
-  flex-grow: 1 100%;
+  flex-grow: 1;
   justify-content: flex-end;
 }

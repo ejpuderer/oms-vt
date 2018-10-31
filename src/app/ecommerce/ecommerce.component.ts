@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EcommerceComponent implements OnInit {
 
+  toolbar = "*";
+
   constructor() { }
 
   ngOnInit() {

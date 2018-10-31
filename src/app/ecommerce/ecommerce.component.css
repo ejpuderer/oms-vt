@@ -1,0 +1,18 @@
+mat-toolbar {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.secondary {
+    width: 80%;
+    margin-left: 10%;
+}
+
+mat-grid-tile {
+    border: 2px solid black;
+    border-radius: 6px;
+    margin: 10px !important;
+}

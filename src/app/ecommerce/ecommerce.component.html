@@ -1,3 +1,24 @@
-<p>
-  ecommerce works!
-</p>
+<mat-toolbar color="dark">
+    <button mat-button (click)="toolbar='metals'">Metals</button>
+    <button mat-button>Plastics</button>
+    <button mat-button>Solvents</button>
+    <button mat-button>Adhesives</button>
+    <button mat-button>Equipment</button>
+    <button mat-button>Parts</button>
+</mat-toolbar>
+
+<mat-toolbar color="dark" *ngIf="toolbar==='metals'" class="secondary">
+    <button mat-button>Aluminum</button>
+    <button mat-button>Steel</button>
+    <button mat-button>Nickle</button>
+</mat-toolbar>
+
+<mat-grid-list cols="3" rowHeight="300px">
+    <mat-grid-tile>
+      Some Text inside a tile
+      <button mat-button>More Info</button>
+      <input number>
+      <button mat-button>Add to Cart</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+  

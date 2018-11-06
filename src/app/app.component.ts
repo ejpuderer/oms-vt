@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { AppService } from './app.service';
+import { filter } from 'rxjs//operators';
+
 
 @Component({
   selector: 'app-root',
@@ -9,9 +12,21 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'OMS';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private appService: AppService) { 
+    router.events
+    .subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        appService.saveLastRoute(val);
+      }
+    });
+  }
 
   ngOnInit() {
-    this.router.navigate(['/']);
+    const lastRoute = this.appService.getLastRoute();
+    if (lastRoute) {
+      this.router.navigateByUrl(lastRoute.url);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }

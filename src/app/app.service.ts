@@ -18,6 +18,7 @@ export class AppService {
     }
 
     public saveLastRoute(val: NavigationEnd) {
+        console.log('Last Route: ' + val.url);
         this.cookieService.set( 'lastRoute', JSON.stringify(val) );
     }
 }

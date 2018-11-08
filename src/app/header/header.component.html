@@ -13,7 +13,10 @@
     </div>
 
     <div id="titleLogin">
-        <button mat-button [routerLink]="['/members']">Sign In</button>
+        <button mat-button [routerLink]="['/login']" *ngIf="!(isAuth$ | async)">Log In</button>
+        <button mat-button [routerLink]="['/signup']" *ngIf="!(isAuth$ | async)">Sign Up</button>
+        <button mat-button [routerLink]="['/members']" *ngIf="isAuth$ | async">Members</button>
+        <button mat-button *ngIf="isAuth$ | async" (click)="onLogout()">Logout</button>
     </div>
 </mat-toolbar>
 

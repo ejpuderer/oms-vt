@@ -13,11 +13,13 @@ import { AuthService } from '../auth/auth.service';
 export class HeaderComponent implements OnInit {
 
   isAuth$: Observable<boolean>;
+  isAdmin$: Observable<boolean>;
 
   constructor(private store: Store<fromRoot.State>, private authService: AuthService) { }
   
   ngOnInit() {
     this.isAuth$ = this.store.select(fromRoot.getIsAuth);
+    this.isAdmin$ = this.store.select(fromRoot.getIsAdmin);
   }
 
   onLogout() {

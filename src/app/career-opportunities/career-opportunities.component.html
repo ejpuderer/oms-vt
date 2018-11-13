@@ -1,3 +1,18 @@
-<p>
-  career-opportunities works!
-</p>
+<p>Current Job Openings</p>
+
+<section *ngFor="let job of availableJobs">
+  <ng-container *ngTemplateOutlet="jobTemp;context:{job: job}"></ng-container>
+</section>
+
+<ng-template #jobTemp let-job="job">
+  <h2>{{ job.positionName }}</h2>
+  <p>How Soon - {{ job.howSoon }}</p>
+  <p>Skills Needed</p>
+  <ul>
+    <li *ngFor="let skill of job.reqExperience">
+      {{ skill.skill }} - {{ skill.yearsOf }} Years<br>
+      <p>{{ skill.addlDetails }}</p>
+    </li>
+  </ul>
+  <p>Salary - {{ job.salary }}</p>
+</ng-template>

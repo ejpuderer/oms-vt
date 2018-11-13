@@ -8,7 +8,9 @@ import { UIService } from '../shared/ui.service';
 import * as fromRoot from '../app.reducer';
 import * as UI from '../shared/ui.actions';
 import * as Auth from './auth.actions';
+import * as Role from './role.actions';
 import { AppService } from '../app.service';
+import { UserModel } from '../models/user.model';
 
 @Injectable()
 export class AuthService {
@@ -32,7 +34,18 @@ export class AuthService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.store.dispatch(new Auth.SetAuthenticated());
-        this.router.navigate(['/members']);
+        this.appService.getDocFromDB(UserModel.prototype, user.uid).subscribe(
+          (doc: UserModel) => {
+            console.log(doc);
+            if (doc && doc.role == 'admin') {
+              this.store.dispatch(new Role.SetAdmin());
+              this.router.navigate(['/admin']);
+            } else {
+              this.store.dispatch(new Role.SetMember());
+              this.router.navigate(['/members']);  
+            }
+          }
+        );
       } else {
         this.store.dispatch(new Auth.SetUnauthenticated());
         this.router.navigate(['/home']);
@@ -46,6 +59,10 @@ export class AuthService {
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         this.store.dispatch(new UI.StopLoading());
+        const omsUser = new UserModel(null);
+        omsUser.email = authData.email;
+        omsUser.role = 'member';
+        this.appService.updateDatabase(result.user.uid, omsUser).then();
       })
       .catch(error => {
         // this.uiService.loadingStateChanged.next(false);

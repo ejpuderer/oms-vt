@@ -6,7 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -23,9 +25,13 @@ import { UIService } from './shared/ui.service';
 import { AuthModule } from './auth/auth.module';
 import { reducers } from './app.reducer';
 import { StoreModule } from '@ngrx/store';
+import { AdminComponent } from './admin/admin.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 const config = {
   apiKey: "AIzaSyBBlh8c8NWNqBwyHfqa-tDLjQgeAAxREnI",
+  projectId: 'oms-vt',
   authDomain: "oms-vt.firebaseapp.com",
   databaseURL: "https://oms-vt.firebaseio.com",
   storageBucket: "oms-vt.appspot.com",
@@ -41,18 +47,23 @@ const config = {
     AppsComponent,
     EcommerceComponent,
     MembersComponent,
-    DropdownDirective
+    DropdownDirective,
+    AdminComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     SupportModule,
+    FormsModule,
     MaterialModule,
     AuthModule,
     AngularFireModule.initializeApp(config),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     AngularFireDatabaseModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    HttpClientModule
   ],
   providers: [CookieService, AppService, AuthService, UIService],
   bootstrap: [AppComponent]

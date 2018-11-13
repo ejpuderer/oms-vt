@@ -1,0 +1,21 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header (click)="expandClick(0)">
+    <mat-panel-title>
+      Job Postings
+    </mat-panel-title>
+    <mat-panel-description *ngIf="expandedView[0]">Click to shrink</mat-panel-description>
+    <mat-panel-description *ngIf="!expandedView[0]">Click to expand</mat-panel-description>
+  </mat-expansion-panel-header>
+  <select size="6">
+    <option *ngFor="let job of availableJobs; let i = index" (click)="selectedJobIndex = i; selectedJob = job">
+      {{ job.data.positionName }}
+    </option>
+  </select>
+  <input matInput placeholder="Position Name" [(ngModel)]="selectedJob.data.positionName">
+  <input matInput placeholder="Salary" [(ngModel)]="selectedJob.data.salary">
+  <input matInput placeholder="How Soon" [(ngModel)]="selectedJob.data.howSoon">
+  <button mat-button *ngIf="selectedJobIndex == -1" (click)="addUpdateJob()">Add Posting</button>
+  <button mat-button *ngIf="selectedJobIndex > -1" (click)="addUpdateJob()">Update Posting</button>
+  <button mat-button *ngIf="selectedJobIndex > -1" (click)="removeJob()">Remove Posting</button>
+  <button mat-button *ngIf="selectedJob.data" (click)="clearJob()">Clear</button>
+</mat-expansion-panel>

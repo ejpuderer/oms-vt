@@ -9,7 +9,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatNativeDateModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatNativeDateModule  } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { MatNativeDateModule } from '@angular/material';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ],
   exports: [
     MatToolbarModule,
@@ -36,7 +38,8 @@ import { MatNativeDateModule } from '@angular/material';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule { }

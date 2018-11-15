@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
-import { filter } from 'rxjs//operators';
-
 
 @Component({
   selector: 'app-root',
@@ -15,9 +13,11 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router, private appService: AppService, private authService: AuthService) { 
     this.router.events
-    .subscribe((val) => {
-      if (val instanceof NavigationEnd) {
-        this.appService.saveLastRoute(val);
+    .subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.appService.saveLastRoute(event);
+        (<any>window).ga('set', 'page', event.urlAfterRedirects);
+        (<any>window).ga('send', 'pageview');
       }
     });
   }

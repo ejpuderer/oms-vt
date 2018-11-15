@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { NavigationEnd } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Meta } from '@angular/platform-browser';
 import { DBModel } from './models/db.model';
-import { HttpClient } from '@angular/common/http';
 import { BaseModel } from './models/base.model';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class AppService {
     private fireBase = 'https://oms-vt.firebaseio.com/';
 
     constructor(private cookieService: CookieService, private db: AngularFirestore,
-            private http: HttpClient) { }
+        private meta: Meta) { }
 
     public getLastRoute(): NavigationEnd {
         const val = <NavigationEnd> JSON.parse(this.cookieService.get('lastRoute'));
@@ -27,6 +27,15 @@ export class AppService {
     public saveLastRoute(val: NavigationEnd) {
         console.log('Last Route: ' + val.url);
         this.cookieService.set( 'lastRoute', JSON.stringify(val) );
+    }
+
+    public setMetaOnInit(desc: string, keys: string) {
+        this.meta.removeTag('description');
+        this.meta.removeTag('keywords');
+        this.meta.addTags([
+            {name: 'description', content: desc},
+            {name: 'keywords', content: keys}
+        ]);
     }
 
     public addDataToDatabase<T extends BaseModel>(model: T) {

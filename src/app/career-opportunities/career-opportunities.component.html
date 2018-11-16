@@ -1,6 +1,6 @@
 <p>Current Job Openings</p>
 
-<section *ngFor="let job of availableJobs">
+<section *ngFor="let job of availableDocs">
   <ng-container *ngTemplateOutlet="jobTemp;context:{job: job}"></ng-container>
 </section>
 

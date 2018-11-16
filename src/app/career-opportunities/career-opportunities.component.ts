@@ -1,28 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { AppService } from '../app.service';
+import { Component } from '@angular/core';
 import { JobPosting } from '../models/job.model';
+import { ShowListBase } from '../show-list-base';
 
 @Component({
   selector: 'app-career-opportunities',
   templateUrl: './career-opportunities.component.html',
   styleUrls: ['./career-opportunities.component.css']
 })
-export class CareerOpportunitiesComponent implements OnInit {
-  availableJobs: JobPosting[];
+export class CareerOpportunitiesComponent extends ShowListBase<JobPosting> {
+  
+  getType() { return JobPosting.prototype }
 
-  constructor(private appService: AppService) { }
-
-  ngOnInit() {
-    this.availableJobs = [];
-    this.appService.getDocListFromDB<JobPosting>(JobPosting.prototype).subscribe(
-      (doc) => {
-        doc.forEach(          
-          (model) => {
-            const tmp = model.payload.doc.data();
-            this.availableJobs.push(tmp);
-          }
-        )}
-    );
-  }
+  onListUpdate() { }
 
 }

@@ -8,7 +8,6 @@ import { CareerOpportunitiesComponent } from './career-opportunities/career-oppo
 import { AuthGuard } from './auth/auth.guard';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
-import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
   {
@@ -30,7 +29,8 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'members', pathMatch: 'full', component: MembersComponent, canLoad: [AuthGuard] },
-  { path: 'admin', pathMatch: 'full', component: AdminComponent, canLoad: [AuthGuard] },
+  { path: 'admin', pathMatch: 'full', canLoad: [AuthGuard],
+    loadChildren: './admin/admin.module#AdminModule' },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/'}
 ];

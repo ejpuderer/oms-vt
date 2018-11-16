@@ -25,13 +25,13 @@ import { UIService } from './shared/ui.service';
 import { AuthModule } from './auth/auth.module';
 import { reducers } from './app.reducer';
 import { StoreModule } from '@ngrx/store';
-import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { BenefitsComponent } from './career-opportunities/benefits/benefits.component';
 import { HistoryComponent } from './members/history/history.component';
 import { WishListComponent } from './members/wish-list/wish-list.component';
+import { AdminModule } from './admin/admin.module';
 
 const config = {
   apiKey: "AIzaSyBBlh8c8NWNqBwyHfqa-tDLjQgeAAxREnI",
@@ -52,7 +52,6 @@ const config = {
     EcommerceComponent,
     MembersComponent,
     DropdownDirective,
-    AdminComponent,
     FooterComponent,
     BenefitsComponent,
     HistoryComponent,
@@ -66,6 +65,7 @@ const config = {
     FormsModule,
     MaterialModule,
     AuthModule,
+    AdminModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
     AngularFireAuthModule,

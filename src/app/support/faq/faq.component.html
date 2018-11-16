@@ -1,3 +1,9 @@
-<p>
-  faq works!
-</p>
+<div *ngFor="let header of headerList">
+  <h2>{{ header }}</h2>
+  <br>
+  <div *ngFor="let doc of filterBy(header)">
+    {{ doc.question }}
+    <br>
+    {{ doc.answer }}
+  </div>
+</div>

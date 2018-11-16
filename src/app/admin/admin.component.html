@@ -1,21 +1,20 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header (click)="expandClick(0)">
-    <mat-panel-title>
-      Job Postings
-    </mat-panel-title>
-    <mat-panel-description *ngIf="expandedView[0]">Click to shrink</mat-panel-description>
-    <mat-panel-description *ngIf="!expandedView[0]">Click to expand</mat-panel-description>
-  </mat-expansion-panel-header>
-  <select size="6">
-    <option *ngFor="let job of availableJobs; let i = index" (click)="selectedJobIndex = i; selectedJob = job">
-      {{ job.data.positionName }}
-    </option>
-  </select>
-  <input matInput placeholder="Position Name" [(ngModel)]="selectedJob.data.positionName">
-  <input matInput placeholder="Salary" [(ngModel)]="selectedJob.data.salary">
-  <input matInput placeholder="How Soon" [(ngModel)]="selectedJob.data.howSoon">
-  <button mat-button *ngIf="selectedJobIndex == -1" (click)="addUpdateJob()">Add Posting</button>
-  <button mat-button *ngIf="selectedJobIndex > -1" (click)="addUpdateJob()">Update Posting</button>
-  <button mat-button *ngIf="selectedJobIndex > -1" (click)="removeJob()">Remove Posting</button>
-  <button mat-button *ngIf="selectedJob.data" (click)="clearJob()">Clear</button>
-</mat-expansion-panel>
+<ng-container *ngTemplateOutlet="expPanel;context:{index: 0, title: 'Job Postings'}"></ng-container>
+<ng-container *ngTemplateOutlet="expPanel;context:{index: 1, title: 'FAQs'}"></ng-container>
+
+<ng-template #expPanel let-index="index" let-title="title">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header (click)="expandClick(index)">
+      <mat-panel-title>
+        {{ title }}
+      </mat-panel-title>
+      <mat-panel-description *ngIf="expandedView[index]">Click to shrink</mat-panel-description>
+      <mat-panel-description *ngIf="!expandedView[index]">Click to expand</mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-jobs *ngIf="index==0" [cmpIndex]="index"></app-jobs>
+    <app-faqs *ngIf="index==1" [cmpIndex]="index"></app-faqs>
+    <button mat-button *ngIf="expandedIndex[index] == -1" (click)="btnClick(index, btnAction.AddUpdate)">Add</button>
+    <button mat-button *ngIf="expandedIndex[index] > -1" (click)="btnClick(index, btnAction.AddUpdate)">Update</button>
+    <button mat-button *ngIf="expandedIndex[index] > -1" (click)="btnClick(index, btnAction.Remove)">Remove</button>
+    <button mat-button (click)="btnClick(index, btnAction.Clear)">Clear</button>
+  </mat-expansion-panel>
+</ng-template>

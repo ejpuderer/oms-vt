@@ -1,0 +1,8 @@
+<select size="6">
+    <option *ngFor="let faq of availableItems; let i = index" (click)="listChange(i); selectedItem = faq">
+      {{ faq.data.question }}
+    </option>
+  </select>
+  <input matInput placeholder="FAQ Section" [(ngModel)]="selectedItem.data.section">
+  <textarea matInput placeholder="Question" [(ngModel)]="selectedItem.data.question"></textarea>
+  <textarea matInput placeholder="Answer" [(ngModel)]="selectedItem.data.answer"></textarea>

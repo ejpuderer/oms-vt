@@ -1,0 +1,15 @@
+<select size="6">
+  <option *ngFor="let blog of availableItems; let i = index" (click)="listChange(i); selectedItem = blog">
+    <div *ngIf="blog.data.blogDate">{{ blog.data.blogDate | date }} - {{ blog.data.author }}</div>
+    <div *ngIf="!blog.data.blogDate">{{ blog.data.author }}</div>
+  </option>
+</select>
+
+<input matInput placeholder="Title" [(ngModel)]="selectedItem.data.title">
+
+<input matInput placeholder="Date" [matDatepicker]="BlogDate" [(ngModel)]="selectedItem.data.blogDate">
+<mat-datepicker-toggle [for]="BlogDate"></mat-datepicker-toggle>
+<mat-datepicker #BlogDate></mat-datepicker>
+
+<input matInput placeholder="Author" [(ngModel)]="selectedItem.data.author">
+<textarea matInput placeholder="Blog" [(ngModel)]="selectedItem.data.contents"></textarea>

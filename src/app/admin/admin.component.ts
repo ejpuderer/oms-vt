@@ -22,8 +22,8 @@ export class AdminComponent implements OnInit {
     this.adminService.actionChangeSubscription.next({cmpIndex: index, action: action});
   }
 
-  expandedView: boolean[] = [false, false];
-  expandedIndex: number[] = [-1, -1];
+  expandedView: boolean[] = [false, false, false, false, false];
+  expandedIndex: number[] = [-1, -1, -1, -1, -1];
 
   expandClick(index: number) {
     this.expandedView[index] = !this.expandedView[index];

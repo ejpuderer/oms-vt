@@ -1,3 +1,17 @@
-<p>
-  blog works!
-</p>
+<p>Our Blog</p>
+
+<section *ngFor="let blog of availableDocs">
+  <ng-container *ngTemplateOutlet="blogTemp;context:{blog: blog}"></ng-container>
+</section>
+
+<ng-template #blogTemp let-blog="blog">
+  <h2>{{ blog.title }}</h2>
+  <div *ngIf="blog.blogDate">
+      {{ blog.author }} - {{ blog.blogDate | date }}
+  </div>
+  <div *ngIf="!blog.blogDate">
+      {{ blog.author }}
+  </div>
+  <br>
+  <div [innerHTML]="blog.contents"></div>
+</ng-template>

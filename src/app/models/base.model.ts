@@ -8,4 +8,8 @@ export abstract class BaseModel implements DBModel {
         Object.assign(this, obj);
     }
 
+    create<T>(type: (new () => T)): T {
+        return new type();
+    }
+
 }

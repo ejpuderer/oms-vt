@@ -13,4 +13,8 @@ export class CareerOpportunitiesComponent extends ShowListBase<JobPosting> {
 
   onListUpdate() { }
 
+  onModelUpdate(data: any) {
+    return new JobPosting(data);
+  }
+
 }

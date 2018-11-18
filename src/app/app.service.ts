@@ -42,11 +42,11 @@ export class AppService {
         return this.db.collection<T>(model.collectionName()).add({...<any>model});
     }
 
-    public updateDatabase<T extends BaseModel>(id: string, model: DBModel) {
+    public updateDatabase<T extends BaseModel>(id: string, model: T) {
         return this.db.collection<T>(model.collectionName()).doc(id).set({...<any>model}, {merge: true});
     }
 
-    public getDocListFromDB<T extends BaseModel>(model: DBModel) {
+    public getDocListFromDB<T extends BaseModel>(model: T) {
         return this.db
             .collection<T>(model.collectionName())
             .snapshotChanges();

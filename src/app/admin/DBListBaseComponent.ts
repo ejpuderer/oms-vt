@@ -18,6 +18,8 @@ export abstract class DBListBasecomponent<T extends BaseModel> implements OnInit
 
     abstract getType():T  
 
+    abstract onModelUpdate(data: any): T;
+
     ngOnInit() {
         this.clearItem();
         this.appService.getDocListFromDB<T>(this.getType()).subscribe(
@@ -26,11 +28,10 @@ export abstract class DBListBasecomponent<T extends BaseModel> implements OnInit
                 this.clearItem();
                 doc.forEach(
                     (model) => {
-                        const obj = <T> new Object(model.payload.doc.data());
                         this.availableItems.push(
                             {
                                 name: model.payload.doc.id,
-                                data: obj
+                                data: this.onModelUpdate(model.payload.doc.data())
                             }
                         )
                     }

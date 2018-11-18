@@ -16,8 +16,7 @@ export abstract class ShowListBase<T extends BaseModel> implements OnInit {
             (doc) => {
                 doc.forEach(
                     (model) => {
-                        const tmp = model.payload.doc.data();
-                        this.availableDocs.push(tmp);
+                        this.availableDocs.push(this.onModelUpdate(model.payload.doc.data()));
                     }
                 )
                 this.onListUpdate();
@@ -27,6 +26,8 @@ export abstract class ShowListBase<T extends BaseModel> implements OnInit {
 
     abstract onListUpdate();
 
+    abstract onModelUpdate(data: any): T;
+
     compareFields(fieldName: string, a: T, b: T): number {
 		return this.compare(a[fieldName], b[fieldName]);
 	}
@@ -34,6 +35,10 @@ export abstract class ShowListBase<T extends BaseModel> implements OnInit {
 	compare(a, b) {
 		if (a === b) return 0;
 		return (a < b ? -1 : 1);
+    }
+
+    getLocalImage(doc: T, imageName: string) {
+        return 'assets/' + doc.collectionName() + '/' + imageName; 
     }
 
 }

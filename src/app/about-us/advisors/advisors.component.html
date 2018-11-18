@@ -1,3 +1,13 @@
-<p>
-  advisors works!
-</p>
+<p>Our Advisors</p>
+
+<section *ngFor="let advisor of availableDocs">
+  <ng-container *ngTemplateOutlet="advisorTemp;context:{advisor: advisor}"></ng-container>
+</section>
+
+<ng-template #advisorTemp let-advisor="advisor">
+  <img src="getLocalImage(advisor, advisor.advisorName)" *ngIf="!advisor.image">
+  <img src="advisor.image" *ngIf="advisor.image">
+  <h2>{{ advisor.advisorName }}</h2>
+  <p>{{ advisor.company }} - {{ advisor.title }}</p>
+  <p>{{ advisor.background }}</p>
+</ng-template>

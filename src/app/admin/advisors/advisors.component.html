@@ -1,0 +1,10 @@
+<select size="6">
+  <option *ngFor="let advisor of availableItems; let i = index" (click)="listChange(i); selectedItem = advisor">
+    {{ advisor.data.name }}
+  </option>
+</select>
+<input matInput placeholder="Advisor Name" [(ngModel)]="selectedItem.data.name">
+<input matInput placeholder="Title" [(ngModel)]="selectedItem.data.title">
+<input matInput placeholder="Company" [(ngModel)]="selectedItem.data.company">
+<textarea matInput placeholder="Background" [(ngModel)]="selectedItem.data.background"></textarea>
+<input matInput placeholder="Image Url" [(ngModel)]="selectedItem.data.image">

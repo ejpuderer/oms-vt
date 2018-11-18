@@ -5,6 +5,9 @@ import { SharedModule } from "../shared/shared.module";
 import { AdminComponent } from "./admin.component";
 import { Routes, RouterModule } from "@angular/router";
 import { AdminService } from "./admin.service";
+import { ForSaleComponent } from './for-sale/for-sale.component';
+import { AdvisorsComponent } from './advisors/advisors.component';
+import { BlogComponent } from './blog/blog.component';
 
 const adminRoute: Routes = [
   {
@@ -20,7 +23,10 @@ const adminRoute: Routes = [
     declarations: [
       AdminComponent,
       JobsComponent,
-      FaqsComponent
+      FaqsComponent,
+      ForSaleComponent,
+      AdvisorsComponent,
+      BlogComponent
     ],
     exports: [
       AdminComponent,

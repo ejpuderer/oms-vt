@@ -33,4 +33,9 @@ export class FaqComponent extends ShowListBase<FAQ> {
   filterBy(section: string):FAQ[] {
     return this.availableDocs.filter((d) => d.section == section);
   }
+
+  onModelUpdate(data: any) {
+    return new FAQ(data);
+  }
+
 }

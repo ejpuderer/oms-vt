@@ -13,7 +13,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app.component';
-import { CareerOpportunitiesComponent } from './career-opportunities/career-opportunities.component';
 import { BlogComponent } from './blog/blog.component';
 import { HeaderComponent } from './header/header.component';
 import { AppsComponent } from './apps/apps.component';
@@ -28,10 +27,10 @@ import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
-import { BenefitsComponent } from './career-opportunities/benefits/benefits.component';
 import { HistoryComponent } from './members/history/history.component';
 import { WishListComponent } from './members/wish-list/wish-list.component';
 import { AdminModule } from './admin/admin.module';
+import { CareersModule } from './careers/careers.module';
 
 const config = {
   apiKey: "AIzaSyBBlh8c8NWNqBwyHfqa-tDLjQgeAAxREnI",
@@ -45,7 +44,6 @@ const config = {
 @NgModule({
   declarations: [
     AppComponent,
-    CareerOpportunitiesComponent,
     BlogComponent,
     HeaderComponent,
     AppsComponent,
@@ -53,7 +51,6 @@ const config = {
     MembersComponent,
     DropdownDirective,
     FooterComponent,
-    BenefitsComponent,
     HistoryComponent,
     WishListComponent
   ],
@@ -66,6 +63,7 @@ const config = {
     MaterialModule,
     AuthModule,
     AdminModule,
+    CareersModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
     AngularFireAuthModule,

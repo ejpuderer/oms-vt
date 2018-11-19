@@ -1,6 +1,23 @@
-app-footer {
-    width: 100%;
-    height: 48px;
+app-header, #appBody, app-footer { 
+    right:0;
+    left:0
+}
+
+app-header {
+    height: 72px;
+    top: 0;
     position: fixed;
+}
+
+#appBody {
+    top: 72px;
+    bottom: 48px;
+    overflow: auto;
+    position: absolute;
+}
+
+app-footer {
+    height: 48px;
     bottom: 0;
+    position: fixed; 
 }

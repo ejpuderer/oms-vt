@@ -6,6 +6,7 @@ import { SupportComponent } from './support.component';
 import { FaqComponent } from './faq/faq.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const supportRoutes: Routes = [
   {
@@ -23,6 +24,10 @@ const supportRoutes: Routes = [
       {
         path: 'privacy',
         component: PrivacyComponent
+      },
+      {
+        path: 'contact-us',
+        component: ContactUsComponent
       }
     ]
   }
@@ -38,7 +43,8 @@ const supportRoutes: Routes = [
     SupportComponent,
     FaqComponent,
     TermsAndConditionsComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    ContactUsComponent
   ],
   exports: [
     RouterModule

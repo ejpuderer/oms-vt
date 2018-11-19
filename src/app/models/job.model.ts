@@ -11,5 +11,7 @@ export class JobPosting extends BaseModel {
     salary: number;
     reqExperience: Experience[]
     howSoon: string;
+    detailsShort: string;
+    detailsLong: string;
 
 }

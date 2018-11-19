@@ -7,7 +7,7 @@
       <button mat-button [matMenuTriggerFor]="menu">About Us</button>
       <button mat-button [routerLink]="['/e-commerce']">E-Commerce</button>
       <button mat-button [routerLink]="['/blog']">Blog</button>
-      <button mat-button [routerLink]="['/careers']">Careers</button>
+      <button mat-button [matMenuTriggerFor]="careers">Careers</button>
       <button mat-button [routerLink]="['/apps']">Apps</button>
       <button mat-button [matMenuTriggerFor]="support">Support</button>
     </div>
@@ -39,8 +39,13 @@
 </mat-menu>
 
 <mat-menu #support="matMenu">
-  <button mat-menu-item [routerLink]="['/support']">Support</button>
+  <button mat-menu-item [routerLink]="['/support/contact-us']">Contact Us</button>
   <button mat-menu-item [routerLink]="['/support/faqs']">FAQs</button>
   <button mat-menu-item [routerLink]="['/support/privacy']">Privacy Policy</button>
   <button mat-menu-item [routerLink]="['/support/tandc']">Terms & Conditions</button>
+</mat-menu>
+
+<mat-menu #careers="matMenu">
+  <button mat-menu-item [routerLink]="['/careers/job-postings']">Job Postings</button>
+  <button mat-menu-item [routerLink]="['/careers/benefits']">Benefits</button>  
 </mat-menu>

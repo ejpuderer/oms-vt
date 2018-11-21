@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { CareersComponent } from "./careers.component";
-import { CommonModule } from "@angular/common";
 import { BenefitsComponent } from "./benefits/benefits.component";
 import { JobPostingsComponent } from './job-postings/job-postings.component';
+import { SharedModule } from "../shared/shared.module";
 
 const careerRoutes: Routes = [
     {
@@ -23,7 +23,7 @@ const careerRoutes: Routes = [
 
 @NgModule({
     imports: [
-    CommonModule,
+    SharedModule,
     RouterModule.forChild(careerRoutes)
   ],
   declarations: [

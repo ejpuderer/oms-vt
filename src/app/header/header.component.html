@@ -1,37 +1,37 @@
 <mat-toolbar color="dark">
-    <div id="titleName" >
-      <img src="./../../assets/logo.png"/>
-      <button mat-button [matMenuTriggerFor]="oms">Online Material Sourcing</button>
-    </div>
+  <div id="titleName">
+    <img src="./../../assets/logo.png" />
+    <button mat-button [matMenuTriggerFor]="oms">Online Material Sourcing</button>
+  </div>
 
-    <div id="titleLinks">
-      <button mat-button [matMenuTriggerFor]="menu">About Us</button>
-      <button mat-button [routerLink]="['/e-commerce']">E-Commerce</button>
-      <button mat-button [routerLink]="['/blog']">Blog</button>
-      <button mat-button [matMenuTriggerFor]="careers">Careers</button>
-      <button mat-button [routerLink]="['/apps']">Apps</button>
-      <button mat-button [matMenuTriggerFor]="support">Support</button>
-    </div>
+  <div id="titleLinks">
+    <button mat-button [matMenuTriggerFor]="menu">About Us</button>
+    <button mat-button [routerLink]="['/e-commerce']">E-Commerce</button>
+    <button mat-button [routerLink]="['/blog']">Blog</button>
+    <button mat-button [matMenuTriggerFor]="careers">Careers</button>
+    <button mat-button [routerLink]="['/apps']">Apps</button>
+    <button mat-button [matMenuTriggerFor]="support">Support</button>
+  </div>
 
-    <div id="titleLogin">
-        <button mat-button [routerLink]="['/login']" *ngIf="!(isAuth$ | async)">Log In</button>
-        <button mat-button [routerLink]="['/signup']" *ngIf="!(isAuth$ | async)">Sign Up</button>
-        <button mat-button [routerLink]="['/members']" *ngIf="(isAuth$ | async) && !(isAdmin$ | async)">Members</button>
-        <button mat-button [routerLink]="['/admin']" *ngIf="(isAuth$ | async) && (isAdmin$ | async)">Admin</button>
-        <button mat-button *ngIf="isAuth$ | async" (click)="onLogout()">Logout</button>
-    </div>
+  <div id="titleLogin">
+    <button mat-button [routerLink]="['/login']" *ngIf="!(isAuth$ | async)">Log In</button>
+    <button mat-button [routerLink]="['/signup']" *ngIf="!(isAuth$ | async)">Sign Up</button>
+    <button mat-button [matMenuTriggerFor]="account" *ngIf="(isAuth$ | async)">Account</button>
+    <button mat-button [routerLink]="['/admin']" *ngIf="(isAuth$ | async) && (isAdmin$ | async)">Admin</button>
+    <button mat-button *ngIf="isAuth$ | async" (click)="onLogout()">Logout</button>
+  </div>
 </mat-toolbar>
 
 <mat-menu #oms="matMenu">
-    <button mat-menu-item [routerLink]="['/home']">Home</button>
-    <button mat-menu-item [routerLink]="['/home/overview']">Overview</button>
-    <button mat-menu-item [routerLink]="['/home/how-it-works']">How It Works</button>
-    <button mat-menu-item [routerLink]="['/home/growth']">Growth</button>
-    <button mat-menu-item [routerLink]="['/home/roadmap']">Roadmap</button>
-  </mat-menu>
+  <button mat-menu-item [routerLink]="['/home']">Home</button>
+  <button mat-menu-item [routerLink]="['/home/overview']">Overview</button>
+  <button mat-menu-item [routerLink]="['/home/how-it-works']">How It Works</button>
+  <button mat-menu-item [routerLink]="['/home/growth']">Growth</button>
+  <button mat-menu-item [routerLink]="['/home/roadmap']">Roadmap</button>
+</mat-menu>
 
 <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="['/about-us']">About US</button>
+  <button mat-menu-item [routerLink]="['/about-us']">About US</button>
   <button mat-menu-item [routerLink]="['/about-us/company']">Company</button>
   <button mat-menu-item [routerLink]="['/about-us/team']">Team</button>
   <button mat-menu-item [routerLink]="['/about-us/advisors']">Advisors</button>
@@ -40,13 +40,20 @@
 </mat-menu>
 
 <mat-menu #support="matMenu">
-  <button mat-menu-item [routerLink]="['/support/contact-us']">Contact Us</button>
   <button mat-menu-item [routerLink]="['/support/faqs']">FAQs</button>
+  <button mat-menu-item [routerLink]="['/support/contact-us']">Contact Us</button>
   <button mat-menu-item [routerLink]="['/support/privacy']">Privacy Policy</button>
   <button mat-menu-item [routerLink]="['/support/tandc']">Terms & Conditions</button>
 </mat-menu>
 
 <mat-menu #careers="matMenu">
   <button mat-menu-item [routerLink]="['/careers/job-postings']">Job Postings</button>
-  <button mat-menu-item [routerLink]="['/careers/benefits']">Benefits</button>  
+  <button mat-menu-item [routerLink]="['/careers/benefits']">Benefits</button>
+</mat-menu>
+
+<mat-menu #account="matMenu">
+  <button mat-menu-item [routerLink]="['/account']">Account Home</button>
+  <button mat-menu-item [routerLink]="['/account/history']">Order History</button>
+  <button mat-menu-item [routerLink]="['/account/wish-list']">Wish List</button>
+  <button mat-menu-item [routerLink]="['/account/addresses']">Addresses</button>
 </mat-menu>

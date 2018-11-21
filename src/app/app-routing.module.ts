@@ -1,10 +1,10 @@
-import { AppsComponent } from './apps/apps.component';
-import { BlogComponent } from './blog/blog.component';
-import { MembersComponent } from './members/members.component';
-import { EcommerceComponent } from './ecommerce/ecommerce.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+
+import { AppsComponent } from './apps/apps.component';
+import { BlogComponent } from './blog/blog.component';
+import { EcommerceComponent } from './ecommerce/ecommerce.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 
@@ -25,14 +25,19 @@ const appRoutes: Routes = [
     path: 'careers', 
     loadChildren: './careers/careers.module#CareersModule'
   },
+  { 
+    path: 'account', canLoad: [AuthGuard],
+    loadChildren: './account/account.module#AccountModule' 
+  },
+  { 
+    path: 'admin', pathMatch: 'full', canLoad: [AuthGuard],
+    loadChildren: './admin/admin.module#AdminModule' 
+  },
   { path: 'e-commerce', pathMatch: 'full', component: EcommerceComponent },
   { path: 'blog', pathMatch: 'full', component: BlogComponent },
   { path: 'apps', pathMatch: 'full', component: AppsComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'members', pathMatch: 'full', component: MembersComponent, canLoad: [AuthGuard] },
-  { path: 'admin', pathMatch: 'full', canLoad: [AuthGuard],
-    loadChildren: './admin/admin.module#AdminModule' },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/'}
 ];

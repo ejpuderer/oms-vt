@@ -1,10 +1,11 @@
 import { DropdownDirective } from './dropdown.directive';
-import { MaterialModule } from './material/material.module';
-import { SupportModule } from './support/support.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -12,25 +13,26 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { CookieService } from 'ngx-cookie-service';
 
-import { AppComponent } from './app.component';
-import { BlogComponent } from './blog/blog.component';
-import { HeaderComponent } from './header/header.component';
-import { AppsComponent } from './apps/apps.component';
-import { EcommerceComponent } from './ecommerce/ecommerce.component';
-import { MembersComponent } from './members/members.component';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 import { UIService } from './shared/ui.service';
 import { AuthModule } from './auth/auth.module';
 import { reducers } from './app.reducer';
-import { StoreModule } from '@ngrx/store';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { FooterComponent } from './footer/footer.component';
-import { HistoryComponent } from './members/history/history.component';
-import { WishListComponent } from './members/wish-list/wish-list.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './material/material.module';
+import { SupportModule } from './support/support.module';
 import { AdminModule } from './admin/admin.module';
 import { CareersModule } from './careers/careers.module';
+import { AccountModule } from './account/account.module';
+
+import { AppComponent } from './app.component';
+import { BlogComponent } from './blog/blog.component';
+import { HeaderComponent } from './header/header.component';
+import { AppsComponent } from './apps/apps.component';
+import { EcommerceComponent } from './ecommerce/ecommerce.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 const config = {
   apiKey: "AIzaSyBBlh8c8NWNqBwyHfqa-tDLjQgeAAxREnI",
@@ -48,11 +50,8 @@ const config = {
     HeaderComponent,
     AppsComponent,
     EcommerceComponent,
-    MembersComponent,
     DropdownDirective,
-    FooterComponent,
-    HistoryComponent,
-    WishListComponent
+    FooterComponent
   ],
   imports: [
     AppRoutingModule,
@@ -64,6 +63,7 @@ const config = {
     AuthModule,
     AdminModule,
     CareersModule,
+    AccountModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
     AngularFireAuthModule,

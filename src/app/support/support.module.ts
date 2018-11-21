@@ -1,12 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { SupportComponent } from './support.component';
 import { FaqComponent } from './faq/faq.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const supportRoutes: Routes = [
   {
@@ -36,7 +37,8 @@ const supportRoutes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
+    ReactiveFormsModule,
     RouterModule.forChild(supportRoutes)
   ],
   declarations: [

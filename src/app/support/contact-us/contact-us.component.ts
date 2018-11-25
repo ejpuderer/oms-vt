@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -14,9 +15,7 @@ export class ContactUsComponent implements OnInit {
   email: FormControl;
   comments: FormControl;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private appService: AppService) { 
     this.firstName = new FormControl('', [Validators.required]);
     this.lastName = new FormControl('', [Validators.required]);
     this.company = new FormControl('', [Validators.required]);;
@@ -32,8 +31,12 @@ export class ContactUsComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  ngOnInit() {
     
   }
 
+  onSubmit() {
+    this.appService.postHttp('https://qbheijzzl9.execute-api.us-east-1.amazonaws.com/live/contact-us'
+    , this.contactUs.value).subscribe((res) => console.log(res));
+  }
 }

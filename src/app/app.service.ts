@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Meta } from '@angular/platform-browser';
 import { DBModel } from './models/db.model';
 import { BaseModel } from './models/base.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +15,7 @@ export class AppService {
     private fireBase = 'https://oms-vt.firebaseio.com/';
 
     constructor(private cookieService: CookieService, private db: AngularFirestore,
-        private meta: Meta) { }
+        private meta: Meta, private http: HttpClient) { }
 
     public getLastRoute(): NavigationEnd {
         const val = <NavigationEnd> JSON.parse(this.cookieService.get('lastRoute'));
@@ -68,5 +69,9 @@ export class AppService {
 
     public makeJSON(obj: any) {
         return JSON.stringify(obj);
+    }
+
+    public postHttp(url: string, data: any) {
+        return this.http.post(url, { data });
     }
 }

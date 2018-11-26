@@ -1,7 +1,6 @@
 <select size="6">
   <option *ngFor="let blog of availableItems; let i = index" (click)="listChange(i); selectedItem = blog">
-    <div *ngIf="blog.data.blogDate">{{ blog.data.blogDate | date }} - {{ blog.data.author }}</div>
-    <div *ngIf="!blog.data.blogDate">{{ blog.data.author }}</div>
+      {{ blog.data.blogDate | date }} - {{ blog.data.author }}
   </option>
 </select>
 

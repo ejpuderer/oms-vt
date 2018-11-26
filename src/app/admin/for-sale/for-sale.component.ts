@@ -46,8 +46,13 @@ export class ForSaleComponent extends DBListBasecomponent<ForSale> {
     this.useableSubtypes = [];
   }
 
-  filterSubTypes(type: ItemType) {
-    this.useableSubtypes = this.availableSubTypes.filter((subType) => subType.typeName == type.typeName)
+  listChange(listIndex: number) {
+    super.listChange(listIndex);
+    this.filterSubTypes(this.selectedItem.data.type);
+  }
+
+  filterSubTypes(typeName: string) {
+    this.useableSubtypes = this.availableSubTypes.filter((subType) => subType.typeName == typeName);
   }
 
   getType() {

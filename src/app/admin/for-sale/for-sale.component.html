@@ -1,22 +1,23 @@
 <select size="6">
     <option *ngFor="let forSale of availableItems; let i = index" 
-        (click)="listChange(i); selectedItem = forSale">
+        (click)="selectedItem = forSale; listChange(i)">
       {{ forSale.data.name }}
     </option>
   </select>
 
   <select size="6" [(ngModel)]="selectedItem.data.type">
-    <option *ngFor="let type of availableTypes" (click)="filterSubTypes(type)">
+    <option *ngFor="let type of availableTypes" (click)="filterSubTypes(type.typeName)"
+    [ngValue]="type.typeName">
       {{ type.typeName }}
     </option>
   </select>
   <select size="6" [(ngModel)]="selectedItem.data.subtype">
-    <option *ngFor="let subtype of useableSubtypes">
+    <option *ngFor="let subtype of useableSubtypes" [ngValue]="subtype.subTypeName">
       {{ subtype.subTypeName }}
     </option>
   </select>
   <select size="6" [(ngModel)]="selectedItem.data.form">
-    <option *ngFor="let form of availableForms">
+    <option *ngFor="let form of availableForms" [ngValue]="form.formName">
       {{ form.formName }}
     </option>
   </select>

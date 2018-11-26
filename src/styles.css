@@ -9,3 +9,31 @@ html, body {
 body {
   margin: 0;
 }
+
+.right-aligned-header > .mat-content {
+  justify-content: space-between;
+}
+
+.mat-content > mat-panel-title, .mat-content > mat-panel-description {
+flex: 0 0 auto;
+}
+
+.add-button {
+  background-color: green;
+  color: white !important;
+}
+
+.update-button {
+  background-color: cyan;
+  color: black !important;
+}
+
+.remove-button {
+  background-color: red;
+  color: black !important;
+}
+
+.clear-button {
+  background-color: blue;
+  color: white !important;
+}

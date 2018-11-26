@@ -9,8 +9,17 @@ import { BtnAction } from '../models/BtnAction.enum';
 })
 export class AdminComponent implements OnInit {
   btnAction = BtnAction;
+  totalCompanents = 6;
 
-  constructor(private adminService: AdminService) { }
+  expandedView: boolean[];
+  expandedIndex: number[];
+
+  constructor(private adminService: AdminService) { 
+    this.expandedView = [];
+    this.expandedIndex = [];
+    this.expandedView.fill(false, 0, this.totalCompanents);
+    this.expandedIndex.fill(-1, 0, this.totalCompanents);
+  }
 
   ngOnInit() {
     this.adminService.indexChangeSubscription.subscribe(
@@ -21,9 +30,6 @@ export class AdminComponent implements OnInit {
   btnClick(index: number, action: BtnAction) {
     this.adminService.actionChangeSubscription.next({cmpIndex: index, action: action});
   }
-
-  expandedView: boolean[] = [false, false, false, false, false];
-  expandedIndex: number[] = [-1, -1, -1, -1, -1];
 
   expandClick(index: number) {
     this.expandedView[index] = !this.expandedView[index];

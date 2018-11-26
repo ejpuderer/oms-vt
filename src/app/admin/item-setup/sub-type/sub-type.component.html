@@ -1,0 +1,17 @@
+<select size="6">
+  <option *ngFor="let subtype of availableItems; let i = index" (click)="listChange(i); selectedItem = subtype">
+    {{ subtype.data.subTypeName }}
+  </option>
+</select>
+<select size="6" [(ngModel)]="selectedItem.data.typeName">
+  <option *ngFor="let type of availableTypes; let i = index" [ngValue]="type.data.typeName">
+    {{ type.data.typeName }}
+  </option>
+</select>
+<input matInput placeholder="Sub Type Name" [(ngModel)]="selectedItem.data.subTypeName">
+<input matInput placeholder="Sub Type Desc" [(ngModel)]="selectedItem.data.subTypeDesc">
+
+<button mat-button *ngIf="selectedItemIndex == -1" (click)="addUpdateItem()">Add</button>
+<button mat-button *ngIf="selectedItemIndex > -1" (click)="addUpdateItem()">Update</button>
+<button mat-button *ngIf="selectedItemIndex > -1" (click)="removeItem()">Remove</button>
+<button mat-button (click)="clearItem()">Clear</button>

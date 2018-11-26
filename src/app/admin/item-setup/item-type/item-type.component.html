@@ -1,0 +1,12 @@
+<select size="6">
+  <option *ngFor="let type of availableItems; let i = index" (click)="listChange(i); selectedItem = type">
+    {{ type.data.typeName }}
+  </option>
+</select>
+<input matInput placeholder="Type Name" [(ngModel)]="selectedItem.data.typeName">
+<input matInput placeholder="Type Desc" [(ngModel)]="selectedItem.data.typeDesc">
+
+<button mat-button *ngIf="selectedItemIndex == -1" (click)="addUpdateItem()">Add</button>
+<button mat-button *ngIf="selectedItemIndex > -1" (click)="addUpdateItem()">Update</button>
+<button mat-button *ngIf="selectedItemIndex > -1" (click)="removeItem()">Remove</button>
+<button mat-button (click)="clearItem()">Clear</button>

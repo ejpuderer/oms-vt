@@ -8,6 +8,10 @@ import { AdminService } from "./admin.service";
 import { ForSaleComponent } from './for-sale/for-sale.component';
 import { AdvisorsComponent } from './advisors/advisors.component';
 import { BlogComponent } from './blog/blog.component';
+import { ItemSetupComponent } from './item-setup/item-setup.component';
+import { ItemTypeComponent } from './item-setup/item-type/item-type.component';
+import { SubTypeComponent } from './item-setup/sub-type/sub-type.component';
+import { ItemFormComponent } from './item-setup/item-form/item-form.component';
 
 const adminRoute: Routes = [
   {
@@ -26,7 +30,11 @@ const adminRoute: Routes = [
       FaqsComponent,
       ForSaleComponent,
       AdvisorsComponent,
-      BlogComponent
+      BlogComponent,
+      ItemSetupComponent,
+      ItemTypeComponent,
+      SubTypeComponent,
+      ItemFormComponent
     ],
     exports: [
       AdminComponent,

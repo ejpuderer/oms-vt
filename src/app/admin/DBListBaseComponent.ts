@@ -20,6 +20,10 @@ export abstract class DBListBasecomponent<T extends BaseModel> implements OnInit
 
     abstract onModelUpdate(data: any): T;
 
+    getAppservice() {
+        return this.appService;
+    }
+
     ngOnInit() {
         this.clearItem();
         this.appService.getDocListFromDB<T>(this.getType()).subscribe(

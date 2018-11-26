@@ -1,0 +1,12 @@
+<select size="6">
+  <option *ngFor="let form of availableItems; let i = index" (click)="listChange(i); selectedItem = form">
+    {{ form.data.formName }}
+  </option>
+</select>
+<input matInput placeholder="Form Name" [(ngModel)]="selectedItem.data.formName">
+<input matInput placeholder="Form Desc" [(ngModel)]="selectedItem.data.formDesc">
+
+<button mat-button *ngIf="selectedItemIndex == -1" (click)="addUpdateItem()">Add</button>
+<button mat-button *ngIf="selectedItemIndex > -1" (click)="addUpdateItem()">Update</button>
+<button mat-button *ngIf="selectedItemIndex > -1" (click)="removeItem()">Remove</button>
+<button mat-button (click)="clearItem()">Clear</button>

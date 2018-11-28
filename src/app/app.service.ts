@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { NavigationEnd } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
 import { Meta } from '@angular/platform-browser';
 import { DBModel } from './models/db.model';
 import { BaseModel } from './models/base.model';
@@ -23,6 +23,10 @@ export class AppService {
             return val;
         }
         return null;
+    }
+
+    public getCookieService() {
+        return this.cookieService;
     }
 
     public saveLastRoute(val: NavigationEnd) {
@@ -51,6 +55,16 @@ export class AppService {
         return this.db
             .collection<T>(model.collectionName())
             .snapshotChanges();
+    }
+
+    public docChangeActionToList<T extends BaseModel>(dca: DocumentChangeAction<T>[]) {
+        const arr: T[] = [];
+        dca.forEach(
+          (model) => {               
+              arr.push(model.payload.doc.data())          
+          }
+        );
+        return arr;
     }
 
     public getDocFromDB<T extends BaseModel>(model: DBModel, docName: string) {

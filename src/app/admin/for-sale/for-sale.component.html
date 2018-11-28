@@ -1,29 +1,27 @@
 <select size="6">
-    <option *ngFor="let forSale of availableItems; let i = index" 
-        (click)="selectedItem = forSale; listChange(i)">
-      {{ forSale.data.name }}
-    </option>
-  </select>
+  <option *ngFor="let forSale of availableItems; let i = index" 
+    (click)="selectedItem = forSale; listChange(i)">
+    {{ forSale.data.name }}
+  </option>
+</select>
 
-  <select size="6" [(ngModel)]="selectedItem.data.type">
-    <option *ngFor="let type of availableTypes" (click)="filterSubTypes(type.typeName)"
-    [ngValue]="type.typeName">
-      {{ type.typeName }}
-    </option>
-  </select>
-  <select size="6" [(ngModel)]="selectedItem.data.subtype">
-    <option *ngFor="let subtype of useableSubtypes" [ngValue]="subtype.subTypeName">
-      {{ subtype.subTypeName }}
-    </option>
-  </select>
-  <select size="6" [(ngModel)]="selectedItem.data.form">
-    <option *ngFor="let form of availableForms" [ngValue]="form.formName">
-      {{ form.formName }}
-    </option>
-  </select>
+<select size="6" [(ngModel)]="selectedItem.data.type">
+  <option *ngFor="let type of availableTypes" (click)="filterSubTypes(type.typeName)" [ngValue]="type.typeName">
+    {{ type.typeName }}
+  </option>
+</select>
+<select size="6" [(ngModel)]="selectedItem.data.subtype">
+  <option *ngFor="let subtype of useableSubtypes" [ngValue]="subtype.subTypeName">
+    {{ subtype.subTypeName }}
+  </option>
+</select>
+<select size="6" [(ngModel)]="selectedItem.data.form">
+  <option *ngFor="let form of availableForms" [ngValue]="form.formName">
+    {{ form.formName }}
+  </option>
+</select>
 
-  <input matInput placeholder="Name" [(ngModel)]="selectedItem.data.name">
-  <input matInput placeholder="Description" [(ngModel)]="selectedItem.data.desc">
-  <input matInput type="number" placeholder="Price" [(ngModel)]="selectedItem.data.price">
-  <input matInput placeholder="Image Link" [(ngModel)]="selectedItem.data.imageRef">
-  
+<input matInput placeholder="Name" [(ngModel)]="selectedItem.data.name">
+<input matInput placeholder="Description" [(ngModel)]="selectedItem.data.desc">
+<input matInput type="number" placeholder="Price" [(ngModel)]="selectedItem.data.price">
+<input matInput placeholder="Image Link" [(ngModel)]="selectedItem.data.imageRef">

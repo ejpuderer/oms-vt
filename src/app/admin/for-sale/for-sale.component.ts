@@ -20,28 +20,15 @@ export class ForSaleComponent extends DBListBasecomponent<ForSale> {
   ngOnInit() {
     super.ngOnInit();
     this.getAppservice().getDocListFromDB<ItemType>(ItemType.prototype).subscribe(
-      (doc) => {
-        this.availableTypes = [];
-        doc.forEach(
-          (model) => this.availableTypes.push(new ItemType(model.payload.doc.data()))          
-        );
-      }
+      (doc) => this.availableTypes = this.getAppservice().docChangeActionToList(doc)
     );
+
     this.getAppservice().getDocListFromDB<SubType>(SubType.prototype).subscribe(
-      (doc) => {
-        this.availableSubTypes = [];
-        doc.forEach(
-          (model) => this.availableSubTypes.push(new SubType(model.payload.doc.data()))          
-        );
-      }
+      (doc) => this.availableSubTypes = this.getAppservice().docChangeActionToList(doc)
     );
+
     this.getAppservice().getDocListFromDB<Form>(Form.prototype).subscribe(
-      (doc) => {
-        this.availableForms = [];
-        doc.forEach(
-          (model) => this.availableForms.push(new Form(model.payload.doc.data()))          
-        );
-      }
+      (doc) => this.availableForms = this.getAppservice().docChangeActionToList(doc)
     );
     this.useableSubtypes = [];
   }

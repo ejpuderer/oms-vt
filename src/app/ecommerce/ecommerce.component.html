@@ -1,24 +1,45 @@
 <mat-toolbar color="dark">
-    <button mat-button (click)="toolbar='metals'">Metals</button>
-    <button mat-button>Plastics</button>
-    <button mat-button>Solvents</button>
-    <button mat-button>Adhesives</button>
-    <button mat-button>Equipment</button>
-    <button mat-button>Parts</button>
-</mat-toolbar>
+    <div>
+        <h4>Filter by Type</h4>
+        <mat-select [(ngModel)]="selectedType">
+            <mat-option *ngFor="let type of availableTypes" [value]="type" (click)="filterSubTypes()">
+                {{ type.typeName }}
+            </mat-option>
+        </mat-select>
+    </div>
 
-<mat-toolbar color="dark" *ngIf="toolbar==='metals'" class="secondary">
-    <button mat-button>Aluminum</button>
-    <button mat-button>Steel</button>
-    <button mat-button>Nickle</button>
+    <div *ngIf="selectedType">
+        <h4>Filter by Subtype</h4>
+        <mat-select [(ngModel)]="selectedSubType">
+            <mat-option *ngFor="let subtype of availableSubTypes" [value]="subtype">
+                {{ subtype.subTypeName }}
+            </mat-option>
+        </mat-select>
+    </div>
+    <div>
+        <h4>Filter by Form</h4>
+        <mat-select [(ngModel)]="selectedForm">
+            <mat-option *ngFor="let form of availableForms" [value]="form">
+                {{ form.formName }}
+            </mat-option>
+        </mat-select>
+    </div>
+    <div>
+        <button mat-button (click)="filterForSale()">Filter Marketplace</button>
+        <button mat-button (click)="clearFilters()">Clear Filters</button>
+    </div>
 </mat-toolbar>
 
 <mat-grid-list cols="3" rowHeight="300px">
-    <mat-grid-tile>
-      Some Text inside a tile
-      <button mat-button>More Info</button>
-      <input number>
-      <button mat-button>Add to Cart</button>
+    <mat-grid-tile *ngFor="let forSale of filteredForSale">
+        <b>{{ forSale.name }}
+            <br>
+            List Price ${{ forSale.price | number:'0.2' }}</b>
+        <button mat-button>More Info</button>
+        <br>
+        <input matInput placeholder="Quantity" type="number" value="1" min="1">
+        <button mat-button>Add to Cart</button>
+        <br>
+        <button mat-button *ngIf="userId">Add to Wishlist</button>
     </mat-grid-tile>
-  </mat-grid-list>
-  
+</mat-grid-list>

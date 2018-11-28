@@ -28,6 +28,10 @@ export abstract class ShowListBase<T extends BaseModel> implements OnInit {
 
     abstract onModelUpdate(data: any): T;
 
+    getAppService() {
+        return this.appService;
+    }
+
     compareFields(fieldName: string, a: T, b: T): number {
 		return this.compare(a[fieldName], b[fieldName]);
 	}

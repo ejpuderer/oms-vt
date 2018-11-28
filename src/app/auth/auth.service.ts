@@ -11,9 +11,11 @@ import * as Auth from './auth.actions';
 import * as Role from './role.actions';
 import { AppService } from '../app.service';
 import { UserModel } from '../models/user.model';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
+
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
@@ -23,20 +25,12 @@ export class AuthService {
   ) {}
 
   initAuthListener() {
-    const lastRoute = this.appService.getLastRoute();
-    if (lastRoute) {
-      console.log(lastRoute.url);
-      this.router.navigateByUrl(lastRoute.url);
-    } else {
-      this.router.navigate(['/']);
-    }
-
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.store.dispatch(new Auth.SetAuthenticated());
         this.appService.getDocFromDB(UserModel.prototype, user.uid).subscribe(
           (doc: UserModel) => {
-            console.log(doc);
+            this.appService.getCookieService().set("uid", user.uid);
             if (doc && doc.role == 'admin') {
               this.store.dispatch(new Role.SetAdmin());
               this.router.navigate(['/admin']);
@@ -47,8 +41,14 @@ export class AuthService {
           }
         );
       } else {
+        this.appService.getCookieService().delete("uid");
         this.store.dispatch(new Auth.SetUnauthenticated());
-        this.router.navigate(['/home']);
+        const lastRoute = this.appService.getLastRoute();
+        if (lastRoute && (lastRoute.url !== "/admin" && lastRoute.url !== "/members")) {
+          this.router.navigateByUrl(lastRoute.url);
+        } else {
+          this.router.navigate(['/home']);
+        }
       }
     });
   }

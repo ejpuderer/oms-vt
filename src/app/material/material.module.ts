@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -25,7 +26,8 @@ import { MatNativeDateModule  } from '@angular/material';
     MatNativeDateModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule
   ],
   exports: [
     MatToolbarModule,
@@ -39,7 +41,8 @@ import { MatNativeDateModule  } from '@angular/material';
     MatNativeDateModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

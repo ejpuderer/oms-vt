@@ -1,6 +1,6 @@
-<mat-toolbar color="dark">
+<mat-toolbar color="primary">
     <div>
-        <h4>Filter by Type</h4>
+        Filter by Type
         <mat-select [(ngModel)]="selectedType">
             <mat-option *ngFor="let type of availableTypes" [value]="type" (click)="filterSubTypes()">
                 {{ type.typeName }}
@@ -9,7 +9,7 @@
     </div>
 
     <div *ngIf="selectedType">
-        <h4>Filter by Subtype</h4>
+        Filter by Subtype
         <mat-select [(ngModel)]="selectedSubType">
             <mat-option *ngFor="let subtype of availableSubTypes" [value]="subtype">
                 {{ subtype.subTypeName }}
@@ -17,7 +17,7 @@
         </mat-select>
     </div>
     <div>
-        <h4>Filter by Form</h4>
+        Filter by Form
         <mat-select [(ngModel)]="selectedForm">
             <mat-option *ngFor="let form of availableForms" [value]="form">
                 {{ form.formName }}
@@ -40,6 +40,6 @@
         <input matInput placeholder="Quantity" type="number" value="1" min="1">
         <button mat-button>Add to Cart</button>
         <br>
-        <button mat-button *ngIf="userId">Add to Wishlist</button>
+        <button mat-button *ngIf="userId" (click)="addToWishlist(forSale)">Add to Wishlist</button>
     </mat-grid-tile>
 </mat-grid-list>

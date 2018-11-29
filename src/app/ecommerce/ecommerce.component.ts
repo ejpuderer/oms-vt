@@ -1,3 +1,4 @@
+import { Wishlist } from './../models/wishlist.model';
 import { Store } from '@ngrx/store';
 import { AppService } from './../app.service';
 import { Form } from './../models/form.model';
@@ -7,6 +8,7 @@ import { ForSale } from './../models/forsale.model';
 import { ShowListBase } from 'src/app/show-list-base';
 import { Component } from '@angular/core';
 import * as fromRoot from '../app.reducer';
+import { WishlistItem } from '../models/wishlistItem.model';
 
 @Component({
   selector: 'app-ecommerce',
@@ -26,6 +28,7 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
 
   filteredForSale: ForSale[];
   userId: String;
+  userWishList: Wishlist;
 
   constructor(private store: Store<fromRoot.State>, appService: AppService) {
     super(appService);
@@ -48,7 +51,11 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
     this.store.select(fromRoot.getIsAuth).subscribe(
       (isAuth) => {
         if (isAuth) {
-          this.userId = this.getAppService().getCookieService().get('uid');
+          const uid = this.getAppService().getCookieService().get('uid');
+          this.userId = uid;
+          this.getAppService().getDocFromDB<Wishlist>(Wishlist.prototype, uid).subscribe(
+            (doc) => this.userWishList = new Wishlist(doc)
+          );
         } else {
           this.userId = null;
         }
@@ -92,6 +99,28 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
 
   onModelUpdate(data: any) {
     return new ForSale(data);
+  }
+
+  addToWishlist(item: ForSale) {
+    if (this.userWishList && this.userWishList.wishListItems) {
+      if (this.userWishList.wishListItems.find((listItem) => listItem.item.name === item.name)) {
+        console.log('Already in list');
+      } else {
+        const wlItem = new WishlistItem();
+        wlItem.dateAdded = new Date();
+        wlItem.item = item;
+        this.userWishList.wishListItems.push(wlItem);
+        this.getAppService().updateDatabase(this.userId.toString(), this.userWishList).then();
+      }
+    } else {
+      this.userWishList = new Wishlist(null);
+      this.userWishList.wishListItems = [];
+      const wlItem = new WishlistItem();
+      wlItem.dateAdded = new Date();
+      wlItem.item = item;
+      this.userWishList.wishListItems.push(wlItem);
+      this.getAppService().updateDatabase(this.userId.toString(), this.userWishList).then();
+    }
   }
 
 }

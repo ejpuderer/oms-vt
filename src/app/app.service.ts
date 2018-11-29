@@ -48,7 +48,8 @@ export class AppService {
     }
 
     public updateDatabase<T extends BaseModel>(id: string, model: T) {
-        return this.db.collection<T>(model.collectionName()).doc(id).set({...<any>model}, {merge: true});
+        const data = JSON.stringify(model);
+        return this.db.collection<T>(model.collectionName()).doc(id).set({data}, {merge: true});
     }
 
     public getDocListFromDB<T extends BaseModel>(model: T) {

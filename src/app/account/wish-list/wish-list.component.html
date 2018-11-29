@@ -1,3 +1,11 @@
-<p>
-  wish-list works!
-</p>
+<div *ngIf="userWishList">
+    Current wishlist:
+    <br>
+    <div *ngFor="let item of userWishList.wishListItems">
+      {{ item.dateAdded | date }} - {{ item.item.name }}
+      <br>
+    </div>
+</div>
+<div *ngIf="!userWishList">
+  No items in your wishlist
+</div>

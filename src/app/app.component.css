@@ -4,13 +4,13 @@ app-header, #appBody, app-footer {
 }
 
 app-header {
-    height: 72px;
+    height: 64px;
     top: 0;
     position: fixed;
 }
 
 #appBody {
-    top: 72px;
+    top: 66px;
     bottom: 48px;
     overflow: auto;
     position: absolute;

@@ -8,4 +8,12 @@ export class Wishlist extends BaseModel {
     }
 
     wishListItems: WishlistItem[];
+
+    toJSON() {
+        let jsonStr = [];
+        for (let item of this.wishListItems) {
+            jsonStr.push({dateAdded: item.dateAdded, item: {...item.item}})
+        }
+        return jsonStr;
+    }
 }

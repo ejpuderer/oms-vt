@@ -103,14 +103,14 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
 
   addToWishlist(item: ForSale) {
     if (this.userWishList && this.userWishList.wishListItems) {
-      if (this.userWishList.wishListItems.find((listItem) => listItem.item.name === item.name)) {
-        console.log('Already in list');
+      if (this.userWishList.wishListItems.find((wli) => wli.item.name === item.name)) {
+        console.log('Already in wishlist');
       } else {
         const wlItem = new WishlistItem();
         wlItem.dateAdded = new Date();
         wlItem.item = item;
         this.userWishList.wishListItems.push(wlItem);
-        this.getAppService().updateDatabase(this.userId.toString(), this.userWishList).then();
+        this.getAppService().updateDatabase(this.userId.toString(), this.userWishList, { wishListItems: this.userWishList.toJSON() }).then();
       }
     } else {
       this.userWishList = new Wishlist(null);
@@ -119,7 +119,7 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
       wlItem.dateAdded = new Date();
       wlItem.item = item;
       this.userWishList.wishListItems.push(wlItem);
-      this.getAppService().updateDatabase(this.userId.toString(), this.userWishList).then();
+      this.getAppService().updateDatabase(this.userId.toString(), this.userWishList, { wishListItems: this.userWishList.toJSON() }).then();
     }
   }
 

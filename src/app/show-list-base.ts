@@ -14,6 +14,7 @@ export abstract class ShowListBase<T extends BaseModel> implements OnInit {
         this.availableDocs = [];
         this.appService.getDocListFromDB<T>(this.getType()).subscribe(
             (doc) => {
+                this.availableDocs = [];
                 doc.forEach(
                     (model) => {
                         this.availableDocs.push(this.onModelUpdate(model.payload.doc.data()));

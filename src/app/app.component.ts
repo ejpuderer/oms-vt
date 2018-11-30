@@ -25,4 +25,12 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authService.initAuthListener();
   }
+
+  schema = {
+    '@context': 'http://schema.org',
+    '@type': 'Organization',
+    'name': 'Online Material Sourcing',
+    'url': 'https://onlinematerialsourcing.com',
+    'logo': 'http://onlinematerialsourcing.com/assets/logo_large.png'
+  };
 }

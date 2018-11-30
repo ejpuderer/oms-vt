@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -69,7 +70,8 @@ const config = {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     StoreModule.forRoot(reducers),
-    HttpClientModule
+    HttpClientModule,
+    NgxJsonLdModule
   ],
   providers: [CookieService, AppService, AuthService, UIService],
   bootstrap: [AppComponent]

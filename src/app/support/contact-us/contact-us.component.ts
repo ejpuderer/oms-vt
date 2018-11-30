@@ -39,4 +39,15 @@ export class ContactUsComponent implements OnInit {
     this.appService.postHttp('https://qbheijzzl9.execute-api.us-east-1.amazonaws.com/live/contact-us'
     , this.contactUs.value).subscribe((res) => console.log(res));
   }
+
+  schema = {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "http://onlinematerialsourcing.com/support/contact-us/",
+    "name": "Online Material Sourcing",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer service"
+    }
+}
 }

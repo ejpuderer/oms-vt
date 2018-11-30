@@ -47,9 +47,13 @@ export class AppService {
         return this.db.collection<T>(model.collectionName()).add({...<any>model});
     }
 
-    public updateDatabase<T extends BaseModel>(id: string, model: T) {
-        const data = JSON.stringify(model);
-        return this.db.collection<T>(model.collectionName()).doc(id).set({data}, {merge: true});
+    public updateDatabase<T extends BaseModel>(id: string, model: T, data?: any) {
+        if (!data) {
+            data = JSON.stringify(model);
+            return this.db.collection<T>(model.collectionName()).doc(id).set({data}, {merge: true});
+        } else {
+            return this.db.collection<T>(model.collectionName()).doc(id).set(data, {merge: true});
+        }
     }
 
     public getDocListFromDB<T extends BaseModel>(model: T) {

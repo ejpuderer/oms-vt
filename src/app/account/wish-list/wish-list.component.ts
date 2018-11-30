@@ -18,11 +18,16 @@ export class WishListComponent implements OnInit {
     this.userWishList = new Wishlist(null);
     const uid = this.appService.getCookieService().get('uid');
     this.appService.getDocFromDB<Wishlist>(Wishlist.prototype, uid).subscribe(
-      (doc) => {
+      (doc: Wishlist) => {
+        console.log(doc);
+        
         const tmpListItems: WishlistItem[] = [];
-        for (let item of doc['WishListItems']) {
+        
+        for (let item of doc.wishListItems) {
+          console.log(item);
+          let any = new Object(item);
           let inneritem = new WishlistItem();
-          inneritem.dateAdded = item.dateAdded;
+          inneritem.dateAdded = new Date(any['dateAdded'].seconds * 1000);
           inneritem.item = new ForSale(item.item);
           tmpListItems.push(inneritem)
         }

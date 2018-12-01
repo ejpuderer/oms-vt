@@ -1,0 +1,17 @@
+.fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    flex-direction: row;
+    flex-grow: 1 1;
+    }
+
+.name mat-form-field {
+    width: 45%;
+}
+
+button {
+    margin: 20px;
+}

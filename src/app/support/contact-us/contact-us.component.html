@@ -1,51 +1,44 @@
 <h3>Contact Us</h3>
 <p>
-  Questions not answered in our <b><a [routerLink]="['/support/faqs']">FAQs</a></b>? 
-  Would you like to schedule a meeting to learn more about how we can help you sell more efficiently? 
+  Questions not answered in our <b><a [routerLink]="['/support/faqs']">FAQs</a></b>?
+  Would you like to schedule a meeting to learn more about how we can help you sell more efficiently?
   Please fill out the form below
 </p>
 <form [formGroup]="contactUs" (ngSubmit)="onSubmit()">
-  <table cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field>
-          <input [formControl]="firstName" matInput required placeholder="First name">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <input [formControl]="lastName" matInput required placeholder="Last Name">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+  <h4>Contact Details</h4>
+  <div class="fields">
+    <div class="name">
+        <mat-form-field style="margin-right: 5%">
+            <input [formControl]="firstName" matInput required placeholder="First name">
+          </mat-form-field>
+          <mat-form-field style="margin-left: 5%">
+            <input [formControl]="lastName" matInput required placeholder="Last Name">
+          </mat-form-field>
+    </div>
+    
+    <mat-form-field>
+      <input [formControl]="company" matInput required placeholder="Company" value="" id="company">
+    </mat-form-field>
 
-  <mat-form-field>
-    <input [formControl]="company" matInput required placeholder="Company" value="" id="company">
-  </mat-form-field>
-  <mat-form-field>
-    <input 
-    [formControl]="email" 
-    matInput placeholder="Email" 
-    email required value="">
-    <mat-error *ngIf="email.hasError('email') 
-      && !email.hasError('required')">
-      Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="email.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <textarea matInput required placeholder="Comments"
-    [formControl]="comments"></textarea>
-    <mat-error *ngIf="comments.hasError('required')">
+    <mat-form-field>
+      <input [formControl]="email" matInput placeholder="Email" email required value="">
+      <mat-error *ngIf="email.hasError('email') 
+                && !email.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput required placeholder="Comments" [formControl]="comments"></textarea>
+      <mat-error *ngIf="comments.hasError('required')">
         Comments are <strong>required</strong>
       </mat-error>
-  </mat-form-field>
+    </mat-form-field>
+  </div>
 
-  <button mat-button color="primary" type="submit"
-    [disabled]="!contactUs.valid">Submit</button>
-  <button mat-button color="warn" type="clear" (click)="contactUs.reset()">Clear</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!contactUs.valid">Submit</button>
+  <button mat-raised-button color="warn" type="clear" (click)="contactUs.reset()">Clear</button>
 </form>
 <ngx-json-ld [json]="schema"></ngx-json-ld>

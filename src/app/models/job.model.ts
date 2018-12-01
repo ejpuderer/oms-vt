@@ -1,7 +1,7 @@
 import { Experience } from "./experience.model";
-import { BaseModel } from "./base.model";
+import { BaseDBModel } from "./baseDB.model";
 
-export class JobPosting extends BaseModel {
+export class JobPosting extends BaseDBModel {
 
     public collectionName():string {
         return 'JobPostings';

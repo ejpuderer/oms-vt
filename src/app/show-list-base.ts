@@ -1,9 +1,9 @@
 import { Injectable, OnInit } from "@angular/core";
-import { BaseModel } from "./models/base.model";
+import { BaseDBModel } from "./models/baseDB.model";
 import { AppService } from "./app.service";
 
 @Injectable()
-export abstract class ShowListBase<T extends BaseModel> implements OnInit {
+export abstract class ShowListBase<T extends BaseDBModel> implements OnInit {
     availableDocs: T[];
 
     abstract getType(): T;

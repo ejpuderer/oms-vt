@@ -1,6 +1,6 @@
-import { BaseModel } from "./base.model";
+import { BaseDBModel } from "./baseDB.model";
 
-export class SubType extends BaseModel {
+export class SubType extends BaseDBModel {
 
     // Metal -> Aluminum, Steel etc
     public collectionName(): string {

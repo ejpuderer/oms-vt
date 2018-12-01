@@ -1,6 +1,6 @@
-import { BaseModel } from "./base.model";
+import { BaseDBModel } from "./baseDB.model";
 
-export class Form extends BaseModel {
+export class Form extends BaseDBModel {
 
     public collectionName(): string {
         return 'Forms';

@@ -1,4 +1,4 @@
-import { BaseModel } from "../models/base.model";
+import { BaseDBModel } from "../models/baseDB.model";
 import { AppService } from "../app.service";
 import { Injectable, Input, OnInit } from "@angular/core";
 import { firebaseList } from "../models/firebaseList.model";
@@ -6,7 +6,7 @@ import { AdminService } from "./admin.service";
 import { BtnAction } from "../models/BtnAction.enum";
 
 @Injectable()
-export abstract class DBListBasecomponent<T extends BaseModel> implements OnInit {
+export abstract class DBListBasecomponent<T extends BaseDBModel> implements OnInit {
 
     @Input('cmpIndex') cmpIndex:number;
 

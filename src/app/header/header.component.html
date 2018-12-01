@@ -14,9 +14,14 @@
   </div>
 
   <div id="titleLogin">
+    <button mat-icon-button [routerLink]="['/e-commerce/shopping-cart']" *ngIf="cartItemCount > 0">
+      <mat-icon>shopping_cart</mat-icon>
+      {{ cartItemCount }}
+    </button>
+    
     <button mat-button [routerLink]="['/login']" *ngIf="!(isAuth$ | async)">Log In</button>
     <button mat-button [routerLink]="['/signup']" *ngIf="!(isAuth$ | async)">Sign Up</button>
-    <button mat-button [matMenuTriggerFor]="account" *ngIf="(isAuth$ | async)">Account</button>
+    <button mat-button [matMenuTriggerFor]="account" *ngIf="(isAuth$ | async)"><mat-icon>account_box</mat-icon>Account</button>
     <button mat-button [routerLink]="['/admin']" *ngIf="(isAuth$ | async) && (isAdmin$ | async)">Admin</button>
     <button mat-button *ngIf="isAuth$ | async" (click)="onLogout()">Logout</button>
   </div>

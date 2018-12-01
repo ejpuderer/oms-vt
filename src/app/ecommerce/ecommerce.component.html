@@ -1,3 +1,5 @@
+<div *ngIf="isActive('/e-commerce')">
+    
 <mat-toolbar color="primary">
     <div>
         Filter by Type
@@ -37,9 +39,13 @@
             List Price ${{ forSale.price | number:'0.2' }}</b>
         <button mat-button>More Info</button>
         <br>
-        <input matInput placeholder="Quantity" type="number" value="1" min="1">
-        <button mat-button>Add to Cart</button>
+        <button mat-icon-button (click)="addToCart(forSale, itemQuantity.value)"><mat-icon>add_shopping_cart</mat-icon></button>
+        <input matInput placeholder="Quantity" type="number" value="1" min="1" #itemQuantity>
         <br>
         <button mat-button *ngIf="userId" (click)="addToWishlist(forSale)">Add to Wishlist</button>
     </mat-grid-tile>
 </mat-grid-list>
+</div>
+<div *ngIf="isActive('/e-commerce/shopping-cart')">
+    <router-outlet></router-outlet>
+</div>

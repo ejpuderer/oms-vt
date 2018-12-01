@@ -1,7 +1,7 @@
 import { WishlistItem } from './wishlistItem.model';
-import { BaseModel } from './base.model';
+import { BaseDBModel } from "./baseDB.model";
 
-export class Wishlist extends BaseModel {
+export class Wishlist extends BaseDBModel {
 
     public collectionName(): string {
         return 'WishList';

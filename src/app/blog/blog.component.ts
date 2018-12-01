@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ShowListBase } from '../show-list-base';
 import { Blog } from '../models/blog.model';
 

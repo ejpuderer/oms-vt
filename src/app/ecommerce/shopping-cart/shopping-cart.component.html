@@ -1,0 +1,7 @@
+<div *ngFor="let cartItem of shoppingCart; let i = index">
+  {{ cartItem.item.name }} - {{ cartItem.item.desc }}
+  <br>Price: {{ cartItem.item.price }}
+  <br>Quantity: {{ cartItem.quantity }}
+  <button mat-icon-button (click)="removeItem(i)"><mat-icon>remove_shopping_cart</mat-icon></button>
+</div>
+<button *ngIf="userId" (click)="submitOrder()">Place Order</button>

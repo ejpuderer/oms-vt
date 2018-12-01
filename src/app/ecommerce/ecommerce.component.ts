@@ -9,6 +9,8 @@ import { ShowListBase } from 'src/app/show-list-base';
 import { Component } from '@angular/core';
 import * as fromRoot from '../app.reducer';
 import { WishlistItem } from '../models/wishlistItem.model';
+import { EcommerceService } from './ecommerce.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ecommerce',
@@ -30,7 +32,8 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
   userId: String;
   userWishList: Wishlist;
 
-  constructor(private store: Store<fromRoot.State>, appService: AppService) {
+  constructor(private store: Store<fromRoot.State>, appService: AppService, 
+    private ecomService: EcommerceService, private router: Router) {
     super(appService);
   }
 
@@ -101,26 +104,28 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
     return new ForSale(data);
   }
 
+  addToCart(item: ForSale, quantity: number) {
+    this.ecomService.addCartItem(item, quantity);
+  }
+
   addToWishlist(item: ForSale) {
     if (this.userWishList && this.userWishList.wishListItems) {
       if (this.userWishList.wishListItems.find((wli) => wli.item.name === item.name)) {
-        console.log('Already in wishlist');
+        this.ecomService.showMessage('That item is already in your wish list');
       } else {
-        const wlItem = new WishlistItem();
-        wlItem.dateAdded = new Date();
-        wlItem.item = item;
-        this.userWishList.wishListItems.push(wlItem);
+        this.userWishList.wishListItems.push(new WishlistItem({ dateAdded: new Date(), item: item}));
         this.getAppService().updateDatabase(this.userId.toString(), this.userWishList, { wishListItems: this.userWishList.toJSON() }).then();
       }
     } else {
       this.userWishList = new Wishlist(null);
       this.userWishList.wishListItems = [];
-      const wlItem = new WishlistItem();
-      wlItem.dateAdded = new Date();
-      wlItem.item = item;
-      this.userWishList.wishListItems.push(wlItem);
+      this.userWishList.wishListItems.push(new WishlistItem({ dateAdded: new Date(), item: item}));
       this.getAppService().updateDatabase(this.userId.toString(), this.userWishList, { wishListItems: this.userWishList.toJSON() }).then();
     }
+  }
+
+  isActive(url: string): boolean {
+    return this.router.isActive(url, true);
   }
 
 }

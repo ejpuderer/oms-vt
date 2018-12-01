@@ -1,5 +1,6 @@
 import { ForSale } from './forsale.model';
-export class WishlistItem {
+import { BaseModel } from './base.model';
+export class WishlistItem extends BaseModel {
 
     dateAdded: Date;
     item: ForSale;

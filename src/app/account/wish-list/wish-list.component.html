@@ -1,9 +1,10 @@
 <div *ngIf="userWishList">
     Current wishlist:
     <br>
-    <div *ngFor="let item of userWishList.wishListItems">
+    <div *ngFor="let item of userWishList.wishListItems; let i = index">
       {{ item.dateAdded | date }} - {{ item.item.name }}
       <br>
+      <button mat-icon-button (click)="removeItem(i)"><mat-icon>remove_shopping_cart</mat-icon></button>
     </div>
 </div>
 <div *ngIf="!userWishList">

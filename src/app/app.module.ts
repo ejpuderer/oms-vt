@@ -26,12 +26,12 @@ import { SupportModule } from './support/support.module';
 import { AdminModule } from './admin/admin.module';
 import { CareersModule } from './careers/careers.module';
 import { AccountModule } from './account/account.module';
+import { EcommerceModule } from './ecommerce/ecommerce.module';
 
 import { AppComponent } from './app.component';
 import { BlogComponent } from './blog/blog.component';
 import { HeaderComponent } from './header/header.component';
 import { AppsComponent } from './apps/apps.component';
-import { EcommerceComponent } from './ecommerce/ecommerce.component';
 import { FooterComponent } from './footer/footer.component';
 
 
@@ -50,7 +50,6 @@ const config = {
     BlogComponent,
     HeaderComponent,
     AppsComponent,
-    EcommerceComponent,
     DropdownDirective,
     FooterComponent
   ],
@@ -65,6 +64,7 @@ const config = {
     AdminModule,
     CareersModule,
     AccountModule,
+    EcommerceModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
     AngularFireAuthModule,

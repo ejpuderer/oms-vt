@@ -1,3 +1,17 @@
-<p>
-  history works!
-</p>
+<div *ngIf="orderHistory">
+    Order History:
+    <br>
+    <div *ngFor="let order of orderHistory.orders">
+      Order Date: {{ order.orderDate | date }} 
+      <br>
+      Items Purchased:
+      <br>
+      <div *ngFor="let item of order.orderItems"><p>
+        {{ item.item.name }} - {{ item.item.desc }} <br>
+        {{ item.quantity }} @ {{ item.item.price }} 
+      </p></div>
+    </div>
+</div>
+<div *ngIf="!orderHistory">
+  No purchases have been made
+</div>

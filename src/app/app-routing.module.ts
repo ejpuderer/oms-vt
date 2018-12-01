@@ -4,7 +4,6 @@ import { AuthGuard } from './auth/auth.guard';
 
 import { AppsComponent } from './apps/apps.component';
 import { BlogComponent } from './blog/blog.component';
-import { EcommerceComponent } from './ecommerce/ecommerce.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 
@@ -33,7 +32,10 @@ const appRoutes: Routes = [
     path: 'admin', pathMatch: 'full', canLoad: [AuthGuard],
     loadChildren: './admin/admin.module#AdminModule' 
   },
-  { path: 'e-commerce', pathMatch: 'full', component: EcommerceComponent },
+  { 
+    path: 'e-commerce',
+    loadChildren: './ecommerce/ecommerce.module#EcommerceModule'
+  },
   { path: 'blog', pathMatch: 'full', component: BlogComponent },
   { path: 'apps', pathMatch: 'full', component: AppsComponent },
   { path: 'signup', component: SignupComponent },

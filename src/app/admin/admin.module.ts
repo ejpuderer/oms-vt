@@ -13,6 +13,7 @@ import { ItemTypeComponent } from './item-setup/item-type/item-type.component';
 import { SubTypeComponent } from './item-setup/sub-type/sub-type.component';
 import { ItemFormComponent } from './item-setup/item-form/item-form.component';
 import { PartnersComponent } from './partners/partners.component';
+import { TeamComponent } from './team/team.component';
 
 const adminRoute: Routes = [
   {
@@ -36,7 +37,8 @@ const adminRoute: Routes = [
       ItemTypeComponent,
       SubTypeComponent,
       ItemFormComponent,
-      PartnersComponent
+      PartnersComponent,
+      TeamComponent
     ],
     exports: [
       AdminComponent,

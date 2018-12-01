@@ -5,6 +5,7 @@
 <ng-container *ngTemplateOutlet="expPanel;context:{index: 4, title: 'Blogs'}"></ng-container>
 <ng-container *ngTemplateOutlet="expPanel;context:{index: 5, title: 'Advisors'}"></ng-container>
 <ng-container *ngTemplateOutlet="expPanel;context:{index: 6, title: 'Partners'}"></ng-container>
+<ng-container *ngTemplateOutlet="expPanel;context:{index: 7, title: 'Our Team'}"></ng-container>
 
 <ng-template #expPanel let-index="index" let-title="title">
   <mat-expansion-panel>
@@ -22,6 +23,7 @@
     <app-blog *ngIf="index==4" [cmpIndex]="index"></app-blog>
     <app-advisors *ngIf="index==5" [cmpIndex]="index"></app-advisors>
     <app-partners *ngIf="index==6" [cmpIndex]="index"></app-partners>
+    <app-team *ngIf="index==7" [cmpIndex]="index"></app-team>
     <div *ngIf="index!=5">
       <button mat-button class="add-button" *ngIf="expandedIndex[index] == -1" 
         (click)="btnClick(index, btnAction.AddUpdate)">Add</button>

@@ -1,0 +1,9 @@
+<select size="6">
+  <option *ngFor="let member of availableItems; let i = index" (click)="listChange(i); selectedItem = member">
+    {{ member.data.firstName }} {{ member.data.lastName }} 
+  </option>
+</select>
+<input matInput placeholder="First Name" [(ngModel)]="selectedItem.data.firstName">
+<input matInput placeholder="Last Name" [(ngModel)]="selectedItem.data.lastName">
+<input matInput placeholder="Image Url" [(ngModel)]="selectedItem.data.imageUrl">
+<textarea matInput placeholder="Background" [(ngModel)]="selectedItem.data.background"></textarea>

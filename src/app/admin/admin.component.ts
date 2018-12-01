@@ -9,7 +9,7 @@ import { BtnAction } from '../models/BtnAction.enum';
 })
 export class AdminComponent implements OnInit {
   btnAction = BtnAction;
-  totalCompanents = 6;
+  totalCompanents = 8;
 
   expandedView: boolean[];
   expandedIndex: number[];

@@ -1,0 +1,10 @@
+.team {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0 1;
+    align-items: center;
+}
+
+img {
+    padding-right: 50px;
+}

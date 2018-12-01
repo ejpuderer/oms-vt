@@ -1,9 +1,10 @@
-<ng-container *ngTemplateOutlet="expPanel;context:{index: 0, title: 'Job Postings'}"></ng-container>
-<ng-container *ngTemplateOutlet="expPanel;context:{index: 1, title: 'FAQs'}"></ng-container>
-<ng-container *ngTemplateOutlet="expPanel;context:{index: 2, title: 'E-Commerce'}"></ng-container>
-<ng-container *ngTemplateOutlet="expPanel;context:{index: 3, title: 'Blogs'}"></ng-container>
-<ng-container *ngTemplateOutlet="expPanel;context:{index: 4, title: 'Advisors'}"></ng-container>
-<ng-container *ngTemplateOutlet="expPanel;context:{index: 5, title: 'Item Setup'}"></ng-container>
+<ng-container *ngTemplateOutlet="expPanel;context:{index: 0, title: 'Item Setup'}"></ng-container>
+<ng-container *ngTemplateOutlet="expPanel;context:{index: 1, title: 'E-Commerce'}"></ng-container>
+<ng-container *ngTemplateOutlet="expPanel;context:{index: 2, title: 'Job Postings'}"></ng-container>
+<ng-container *ngTemplateOutlet="expPanel;context:{index: 3, title: 'FAQs'}"></ng-container>
+<ng-container *ngTemplateOutlet="expPanel;context:{index: 4, title: 'Blogs'}"></ng-container>
+<ng-container *ngTemplateOutlet="expPanel;context:{index: 5, title: 'Advisors'}"></ng-container>
+<ng-container *ngTemplateOutlet="expPanel;context:{index: 6, title: 'Partners'}"></ng-container>
 
 <ng-template #expPanel let-index="index" let-title="title">
   <mat-expansion-panel>
@@ -14,12 +15,13 @@
       <mat-panel-description *ngIf="expandedView[index]">Click to shrink</mat-panel-description>
       <mat-panel-description *ngIf="!expandedView[index]">Click to expand</mat-panel-description>
     </mat-expansion-panel-header>
-    <app-jobs *ngIf="index==0" [cmpIndex]="index"></app-jobs>
-    <app-faqs *ngIf="index==1" [cmpIndex]="index"></app-faqs>
-    <app-for-sale *ngIf="index==2" [cmpIndex]="index"></app-for-sale>
-    <app-blog *ngIf="index==3" [cmpIndex]="index"></app-blog>
-    <app-advisors *ngIf="index==4" [cmpIndex]="index"></app-advisors>
-    <app-item-setup *ngIf="index==5" [cmpIndex]="index"></app-item-setup>
+    <app-item-setup *ngIf="index==0" [cmpIndex]="index"></app-item-setup>
+    <app-for-sale *ngIf="index==1" [cmpIndex]="index"></app-for-sale>
+    <app-jobs *ngIf="index==2" [cmpIndex]="index"></app-jobs>
+    <app-faqs *ngIf="index==3" [cmpIndex]="index"></app-faqs>
+    <app-blog *ngIf="index==4" [cmpIndex]="index"></app-blog>
+    <app-advisors *ngIf="index==5" [cmpIndex]="index"></app-advisors>
+    <app-partners *ngIf="index==6" [cmpIndex]="index"></app-partners>
     <div *ngIf="index!=5">
       <button mat-button class="add-button" *ngIf="expandedIndex[index] == -1" 
         (click)="btnClick(index, btnAction.AddUpdate)">Add</button>

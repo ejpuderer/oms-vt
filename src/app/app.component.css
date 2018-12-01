@@ -12,6 +12,9 @@ app-header {
 #appBody {
     top: 66px;
     bottom: 48px;
+    width: 90%;
+    margin-left: 5%;
+    padding-right: 5%;
     overflow: auto;
     position: absolute;
 }

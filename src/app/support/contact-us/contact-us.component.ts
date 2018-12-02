@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
+import { UIService } from 'src/app/shared/ui.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -15,7 +16,7 @@ export class ContactUsComponent implements OnInit {
   email: FormControl;
   comments: FormControl;
 
-  constructor(private appService: AppService) { 
+  constructor(private appService: AppService, private uiService: UIService) {
     this.firstName = new FormControl('', [Validators.required]);
     this.lastName = new FormControl('', [Validators.required]);
     this.company = new FormControl('', [Validators.required]);;
@@ -32,12 +33,28 @@ export class ContactUsComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
+  }
+
+  clearForm() {
+    Object.keys(this.contactUs.controls).forEach(control => {
+      const ctrl = this.contactUs.controls[control]; 
+      ctrl.reset();
+      ctrl.setErrors(null);
+    });
   }
 
   onSubmit() {
     this.appService.postHttp('https://qbheijzzl9.execute-api.us-east-1.amazonaws.com/live/contact-us'
-    , this.contactUs.value).subscribe((res) => console.log(res));
+      , this.contactUs.value).subscribe((res) => {
+        this.uiService.showSnackbar(
+          'Thank you for your feedback, someone will get back with you within 2 business days',
+          null, 3000);
+        this.clearForm();
+      },
+      (error) => {
+        this.uiService.showSnackbar(error, null, 3000);
+      });
   }
 
   schema = {
@@ -49,5 +66,5 @@ export class ContactUsComponent implements OnInit {
       "@type": "ContactPoint",
       "contactType": "Customer service"
     }
-}
+  }
 }

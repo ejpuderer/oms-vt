@@ -39,6 +39,6 @@
   </div>
 
   <button mat-raised-button color="primary" type="submit" [disabled]="!contactUs.valid">Submit</button>
-  <button mat-raised-button color="warn" type="clear" (click)="contactUs.reset()">Clear</button>
+  <button mat-raised-button color="warn" type="clear" (click)="clearForm()">Clear</button>
 </form>
 <ngx-json-ld [json]="schema"></ngx-json-ld>

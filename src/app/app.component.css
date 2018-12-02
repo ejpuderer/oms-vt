@@ -11,16 +11,10 @@ app-header {
 
 #appBody {
     top: 66px;
-    bottom: 48px;
+    bottom: 0px;
     width: 90%;
     margin-left: 5%;
     padding-right: 5%;
     overflow: auto;
     position: absolute;
-}
-
-app-footer {
-    height: 48px;
-    bottom: 0;
-    position: fixed; 
 }

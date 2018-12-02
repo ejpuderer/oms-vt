@@ -6,9 +6,18 @@ mat-toolbar div {
   display: flex;
 }
 
+mat-toolbar button {
+  font-weight: bold !important;
+  font-size: 14 !important;
+}
+
 #titleName {
   flex-grow: 1;
   justify-content: flex-start;
+}
+
+#linkedIn {
+  margin-top: 14px;
 }
 
 #titleLinks {

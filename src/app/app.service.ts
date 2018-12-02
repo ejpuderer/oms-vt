@@ -50,8 +50,7 @@ export class AppService {
 
     public updateDatabase<T extends BaseDBModel>(id: string, model: T, data?: any) {
         if (!data) {
-            data = JSON.stringify(model);
-            return this.db.collection<T>(model.collectionName()).doc(id).set({data}, {merge: true});
+            return this.db.collection<T>(model.collectionName()).doc(id).set({...<any>model});
         } else {
             return this.db.collection<T>(model.collectionName()).doc(id).set(data, {merge: true});
         }

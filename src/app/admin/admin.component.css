@@ -1,3 +1,31 @@
 mat-panel-title {
     text-align: center;
 }
+
+button {
+    margin: 10px;
+}
+
+::ng-deep .admin-row {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0 1;
+}
+
+::ng-deep .admin-row .inner {
+    margin: 10px;
+}
+
+::ng-deep .admin-row .admin-input {
+    flex-direction: column;
+}
+
+::ng-deep input {
+    width: 400px !important;
+    margin-bottom: 10px !important;
+}
+
+::ng-deep textarea {
+    width: 600px !important;
+    height: 125px;
+}

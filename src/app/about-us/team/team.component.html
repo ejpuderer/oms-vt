@@ -3,8 +3,10 @@
   <hr *ngIf="i != 0">
   <div class="team">
     <div>
-      <img [src]="member.imageUrl" *ngIf="member.imageUrl">
-      <img [src]="getImg(member)" *ngIf="!member.imageUrl">
+      <img [src]="member.imageUrl" *ngIf="member.imageUrl"
+      [height]="member.logoHeight" [width]="member.logoWidth">
+      <img [src]="getImg(member)" *ngIf="!member.imageUrl" 
+        [height]="member.logoHeight" [width]="member.logoWidth">
     </div>
     <div>
       <h4>{{ member.firstName }} {{ member.lastName }}</h4>

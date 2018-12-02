@@ -1,9 +1,31 @@
-<select size="6">
-  <option *ngFor="let member of availableItems; let i = index" (click)="listChange(i); selectedItem = member">
-    {{ member.data.firstName }} {{ member.data.lastName }} 
-  </option>
-</select>
-<input matInput placeholder="First Name" [(ngModel)]="selectedItem.data.firstName">
-<input matInput placeholder="Last Name" [(ngModel)]="selectedItem.data.lastName">
-<input matInput placeholder="Image Url" [(ngModel)]="selectedItem.data.imageUrl">
-<textarea matInput placeholder="Background" [(ngModel)]="selectedItem.data.background"></textarea>
+<div class="admin-row">
+  <div class="inner">
+    <select size="6">
+      <option *ngFor="let member of availableItems; let i = index" (click)="listChange(i); selectedItem = member">
+        {{ member.data.firstName }} {{ member.data.lastName }}
+      </option>
+    </select>
+  </div>
+  <div class="inner">
+    <div class="admin-input">
+      <div>
+        <input matInput placeholder="First Name" [(ngModel)]="selectedItem.data.firstName">
+      </div>
+      <div>
+        <input matInput placeholder="Last Name" [(ngModel)]="selectedItem.data.lastName">
+      </div>
+      <div>
+        <input matInput placeholder="Image Url" [(ngModel)]="selectedItem.data.imageUrl">
+      </div>
+      <div>
+        <input matInput placeholder="Image Width" [(ngModel)]="selectedItem.data.logoWidth">
+      </div>
+      <div>
+        <input matInput placeholder="Image Height" [(ngModel)]="selectedItem.data.logoHeight">
+      </div>
+    </div>
+  </div>
+  <div class="inner">
+    <textarea matInput placeholder="Background" [(ngModel)]="selectedItem.data.background"></textarea>
+  </div>
+</div>

@@ -24,7 +24,7 @@
     <app-advisors *ngIf="index==5" [cmpIndex]="index"></app-advisors>
     <app-partners *ngIf="index==6" [cmpIndex]="index"></app-partners>
     <app-team *ngIf="index==7" [cmpIndex]="index"></app-team>
-    <div *ngIf="index!=5">
+    <div *ngIf="index!=0">
       <button mat-button class="add-button" *ngIf="expandedIndex[index] == -1" 
         (click)="btnClick(index, btnAction.AddUpdate)">Add</button>
       <button mat-button class="update-button" *ngIf="expandedIndex[index] > -1" 

@@ -1,12 +1,24 @@
-<select size="6">
-  <option *ngFor="let type of availableItems; let i = index" (click)="listChange(i); selectedItem = type">
-    {{ type.data.typeName }}
-  </option>
-</select>
-<input matInput placeholder="Type Name" [(ngModel)]="selectedItem.data.typeName">
-<input matInput placeholder="Type Desc" [(ngModel)]="selectedItem.data.typeDesc">
+<div class="admin-row">
+  <div class="inner">
+    <select size="6">
+      <option *ngFor="let type of availableItems; let i = index" (click)="listChange(i); selectedItem = type">
+        {{ type.data.typeName }}
+      </option>
+    </select>
+  </div>
+  <div class="inner">
+    <div class="admin-input">
+      <div>
+        <input matInput placeholder="Type Name" [(ngModel)]="selectedItem.data.typeName">
+      </div>
+      <div>
+        <input matInput placeholder="Type Desc" [(ngModel)]="selectedItem.data.typeDesc">
+      </div>
+    </div>
+  </div>
+</div>
 
-<button mat-button *ngIf="selectedItemIndex == -1" (click)="addUpdateItem()">Add</button>
-<button mat-button *ngIf="selectedItemIndex > -1" (click)="addUpdateItem()">Update</button>
-<button mat-button *ngIf="selectedItemIndex > -1" (click)="removeItem()">Remove</button>
-<button mat-button (click)="clearItem()">Clear</button>
+<button mat-button class="add-button" *ngIf="selectedItemIndex == -1" (click)="addUpdateItem()">Add</button>
+<button mat-button class="update-button" *ngIf="selectedItemIndex > -1" (click)="addUpdateItem()">Update</button>
+<button mat-button class="remove-button" *ngIf="selectedItemIndex > -1" (click)="removeItem()">Remove</button>
+<button mat-button class="clear-button" (click)="clearItem()">Clear</button>

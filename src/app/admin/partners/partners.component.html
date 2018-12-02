@@ -1,9 +1,31 @@
-<select size="6">
-  <option *ngFor="let partner of availableItems; let i = index" (click)="listChange(i); selectedItem = partner">
-    {{ partner.data.companyName }}
-  </option>
-</select>
-<input matInput placeholder="Company Name" [(ngModel)]="selectedItem.data.companyName">
-<input matInput placeholder="Company Url" [(ngModel)]="selectedItem.data.url">
-<input matInput placeholder="Logo Url" [(ngModel)]="selectedItem.data.logo">
-<textarea matInput placeholder="Why Partner" [(ngModel)]="selectedItem.data.why"></textarea>
+<div class="admin-row">
+  <div class="inner">
+    <select size="6">
+      <option *ngFor="let partner of availableItems; let i = index" (click)="listChange(i); selectedItem = partner">
+        {{ partner.data.companyName }}
+      </option>
+    </select>
+  </div>
+  <div class="inner">
+    <div class="admin-input">
+      <div>
+        <input matInput placeholder="Company Name" [(ngModel)]="selectedItem.data.companyName">
+      </div>
+      <div>
+        <input matInput placeholder="Company Url" [(ngModel)]="selectedItem.data.url">
+      </div>
+      <div>
+        <input matInput placeholder="Logo Url" [(ngModel)]="selectedItem.data.logo">
+      </div>
+      <div>
+        <input matInput placeholder="Logo Width" [(ngModel)]="selectedItem.data.logoWidth">
+      </div>
+      <div>
+        <input matInput placeholder="Logo Height" [(ngModel)]="selectedItem.data.logoHeight">
+      </div>
+    </div>
+  </div>
+  <div class="inner">
+    <textarea matInput placeholder="Why Partner" [(ngModel)]="selectedItem.data.why"></textarea>
+  </div>
+</div>

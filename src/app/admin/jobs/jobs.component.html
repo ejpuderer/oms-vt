@@ -1,8 +1,27 @@
-<select size="6">
-  <option *ngFor="let job of availableItems; let i = index" (click)="listChange(i); selectedItem = job">
-    {{ job.data.positionName }}
-  </option>
-</select>
-<input matInput placeholder="Position Name" [(ngModel)]="selectedItem.data.positionName">
-<input matInput placeholder="Salary" [(ngModel)]="selectedItem.data.salary">
-<input matInput placeholder="How Soon" [(ngModel)]="selectedItem.data.howSoon">
+<div class="admin-row">
+  <div class="inner">
+    <select size="6">
+      <option *ngFor="let job of availableItems; let i = index" (click)="listChange(i); selectedItem = job">
+        {{ job.data.positionName }}
+      </option>
+    </select>
+
+  </div>
+  <div class="inner">
+    <div class="admin-input">
+      <div>
+        <input matInput placeholder="Position Name" [(ngModel)]="selectedItem.data.positionName">
+      </div>
+      <div>
+        <input matInput placeholder="Salary" [(ngModel)]="selectedItem.data.salary">
+      </div>
+      <div>
+        <input matInput placeholder="How Soon" [(ngModel)]="selectedItem.data.howSoon">
+      </div>
+
+    </div>
+  </div>
+  <div class="inner">
+    <textarea matInput placeholder="Description" [(ngModel)]="selectedItem.data.detailsLong"></textarea>
+  </div>
+</div>

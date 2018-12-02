@@ -1,14 +1,27 @@
-<select size="6">
-  <option *ngFor="let blog of availableItems; let i = index" (click)="listChange(i); selectedItem = blog">
-      {{ blog.data.blogDate | date }} - {{ blog.data.author }}
-  </option>
-</select>
-
-<input matInput placeholder="Title" [(ngModel)]="selectedItem.data.title">
-
-<input matInput placeholder="Date" [matDatepicker]="BlogDate" [(ngModel)]="selectedItem.data.blogDate">
-<mat-datepicker-toggle [for]="BlogDate"></mat-datepicker-toggle>
-<mat-datepicker #BlogDate></mat-datepicker>
-
-<input matInput placeholder="Author" [(ngModel)]="selectedItem.data.author">
-<textarea matInput placeholder="Blog" [(ngModel)]="selectedItem.data.contents"></textarea>
+<div class="admin-row">
+  <div class="inner">
+    <select size="6">
+      <option *ngFor="let blog of availableItems; let i = index" (click)="listChange(i); selectedItem = blog">
+        {{ blog.data.blogDate | date }} - {{ blog.data.author }}
+      </option>
+    </select>
+  </div>
+  <div class="inner">
+    <div class="admin-input">
+      <div>
+        <input matInput placeholder="Title" [(ngModel)]="selectedItem.data.title">
+      </div>
+      <div>
+        <input matInput placeholder="Date" [matDatepicker]="BlogDate" [(ngModel)]="selectedItem.data.blogDate">
+        <mat-datepicker-toggle [for]="BlogDate"></mat-datepicker-toggle>
+        <mat-datepicker #BlogDate></mat-datepicker>
+      </div>
+      <div>
+        <input matInput placeholder="Author" [(ngModel)]="selectedItem.data.author">
+      </div>
+    </div>
+  </div>
+  <div class="inner">
+    <textarea matInput placeholder="Blog" [(ngModel)]="selectedItem.data.contents"></textarea>
+  </div>
+</div>

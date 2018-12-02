@@ -1,14 +1,16 @@
 <h2>Potential Partners</h2>
 <div *ngFor="let partner of availableDocs; let i = index">
   <hr *ngIf="i != 0">
-  <div class="partner"> 
+  <br>
+  <div class="partner">
     <div>
-        <a [href]="partner.url" target="_blank"><img [src]="partner.logo"></a>    
+        <a [href]="partner.url" target="_blank">
+          <img [src]="partner.logo" [height]="partner.logoHeight" [width]="partner.logoWidth"></a>    
     </div>
     <div>
       <h4><a [href]="partner.url" target="_blank">{{ partner.companyName }}</a></h4>
-      <br>
       <div [innerHtml]="partner.why"></div>
     </div>
   </div>
+  <br>
 </div>

@@ -1,10 +1,28 @@
-<select size="6">
-  <option *ngFor="let advisor of availableItems; let i = index" (click)="listChange(i); selectedItem = advisor">
-    {{ advisor.data.advisorName }}
-  </option>
-</select>
-<input matInput placeholder="Advisor Name" [(ngModel)]="selectedItem.data.advisorName">
-<input matInput placeholder="Title" [(ngModel)]="selectedItem.data.title">
-<input matInput placeholder="Company" [(ngModel)]="selectedItem.data.company">
-<textarea matInput placeholder="Background" [(ngModel)]="selectedItem.data.background"></textarea>
-<input matInput placeholder="Image Url" [(ngModel)]="selectedItem.data.image">
+<div class="admin-row">
+  <div class="inner">
+    <select size="8">
+      <option *ngFor="let advisor of availableItems; let i = index" (click)="listChange(i); selectedItem = advisor">
+        {{ advisor.data.advisorName }}
+      </option>
+    </select>
+  </div>
+  <div class="inner">
+    <div class="admin-input">
+      <div>
+        <input matInput placeholder="Advisor Name" [(ngModel)]="selectedItem.data.advisorName">
+      </div>
+      <div>
+        <input matInput placeholder="Title" [(ngModel)]="selectedItem.data.title">
+      </div>
+      <div>
+        <input matInput placeholder="Company" [(ngModel)]="selectedItem.data.company">
+      </div>
+      <div>
+        <input matInput placeholder="Image Url" [(ngModel)]="selectedItem.data.image">
+      </div>
+    </div>
+  </div>
+  <div class="inner">
+    <textarea matInput placeholder="Background" [(ngModel)]="selectedItem.data.background"></textarea>
+  </div>
+</div>

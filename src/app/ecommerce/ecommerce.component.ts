@@ -32,7 +32,7 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
   userId: String;
   userWishList: Wishlist;
 
-  constructor(private store: Store<fromRoot.State>, appService: AppService, 
+  constructor(private store: Store<fromRoot.State>, appService: AppService,
     private ecomService: EcommerceService, private router: Router) {
     super(appService);
   }
@@ -126,6 +126,17 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
 
   isActive(url: string): boolean {
     return this.router.isActive(url, true);
+  }
+
+  getImgSrc(item: ForSale): String {
+    if (item.imageRef) {
+      if (item.imageRef.startsWith('http')) {
+        return item.imageRef;
+      } else {
+        return '../../assets/e-com/' + item.imageRef + '.jpg';
+      }
+    }
+    return null;
   }
 
 }

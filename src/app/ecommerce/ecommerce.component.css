@@ -7,7 +7,7 @@ mat-toolbar {
 mat-grid-tile {
     border: 2px solid black;
     border-radius: 6px;
-    margin: 10px !important;
+    margin-top: 10px;
 }
 
 mat-select {
@@ -16,4 +16,26 @@ mat-select {
     border-bottom-style: solid !important;
     text-align: center;
     text-align-last: center;
+}
+
+.grid-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-row {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.grid-row button, input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+input {
+  width: 40px !important;
+  margin-top: 10px;
 }

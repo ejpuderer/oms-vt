@@ -37,3 +37,9 @@ flex: 0 0 auto;
   background-color: blue;
   color: white !important;
 }
+
+.mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
+  margin-left: 20px !important;
+}

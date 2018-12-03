@@ -44,17 +44,16 @@
         <div>
           List Price ${{ forSale.price | number:'0.2' }}
         </div>
-        <br>
         <div>
           <div class="grid-row">
+            <div>
+              <button mat-raised-button color="accent" *ngIf="userId" (click)="addToWishlist(forSale)">Add to Wishlist</button>
+            </div>
             <div>
               <button mat-raised-button color="primary">More Info</button>
             </div>
             <div>
-              <button mat-raised-button *ngIf="userId" (click)="addToWishlist(forSale)">Add to Wishlist</button>
-            </div>
-            <div>
-              <input matInput placeholder="Quantity" type="number" value="1" min="1" max="99" #itemQuantity>
+              <input matInput type="number" value="1" min="1" max="99" #itemQuantity>
             </div>
             <div>
               <button mat-icon-button (click)="addToCart(forSale, itemQuantity.value)">

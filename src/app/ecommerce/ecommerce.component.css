@@ -8,6 +8,12 @@ mat-grid-tile {
     border: 2px solid black;
     border-radius: 6px;
     margin-top: 10px;
+    justify-content: flex-start;
+}
+
+.mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
 }
 
 mat-select {
@@ -16,6 +22,14 @@ mat-select {
     border-bottom-style: solid !important;
     text-align: center;
     text-align-last: center;
+}
+
+mat-icon {
+  background-color: lightgreen !important;
+  border-radius: 10px !important;
+  border-color: black !important;
+  border-style: solid !important;
+  border: 2px !important;
 }
 
 .grid-col {
@@ -27,15 +41,20 @@ mat-select {
   display: flex;
   flex-direction: row;
   align-content: center;
-  justify-content: space-evenly;
 }
 
 .grid-row button, input {
-  margin-left: 10px;
   margin-right: 10px;
+  font-weight: bold;
+}
+
+.basket {
+  justify-content: flex-end;
+  margin-right: 20px;
 }
 
 input {
   width: 40px !important;
   margin-top: 10px;
+  border: 0px;
 }

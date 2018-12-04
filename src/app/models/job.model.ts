@@ -1,4 +1,3 @@
-import { Experience } from "./experience.model";
 import { BaseDBModel } from "./baseDB.model";
 
 export class JobPosting extends BaseDBModel {
@@ -7,11 +6,14 @@ export class JobPosting extends BaseDBModel {
         return 'JobPostings';
     }
 
-    positionName: string;
+    title: string;
     salary: number;
-    reqExperience: Experience[]
     howSoon: string;
-    detailsShort: string;
-    detailsLong: string;
+    description: String;
+    datePosted: Date;
+    employmentType: String;
+    experienceRequirements: String;
+    educationRequirements: String;
+    responsibilities: String;
 
 }

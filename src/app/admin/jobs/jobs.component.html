@@ -2,7 +2,7 @@
   <div class="inner">
     <select size="6">
       <option *ngFor="let job of availableItems; let i = index" (click)="listChange(i); selectedItem = job">
-        {{ job.data.positionName }}
+        {{ job.data.title }}
       </option>
     </select>
 
@@ -10,18 +10,36 @@
   <div class="inner">
     <div class="admin-input">
       <div>
-        <input matInput placeholder="Position Name" [(ngModel)]="selectedItem.data.positionName">
+        <input matInput placeholder="Position Name" [(ngModel)]="selectedItem.data.title">
       </div>
       <div>
         <input matInput placeholder="Salary" [(ngModel)]="selectedItem.data.salary">
       </div>
       <div>
+        <input matInput placeholder="Education" [(ngModel)]="selectedItem.data.educationRequirements">
+      </div>
+      <div>
+        <input matInput placeholder="Experience" [(ngModel)]="selectedItem.data.experienceRequirements">
+      </div>
+      <div>
         <input matInput placeholder="How Soon" [(ngModel)]="selectedItem.data.howSoon">
       </div>
-
+      <div>
+        <input matInput placeholder="How Soon" [matDatepicker]="JobDate" [(ngModel)]="selectedItem.data.datePosted">
+        <mat-datepicker-toggle [for]="JobDate"></mat-datepicker-toggle>
+        <mat-datepicker #JobDate></mat-datepicker>
+      </div>
+      <div>
+        <input matInput placeholder="Employment Type" [(ngModel)]="selectedItem.data.employmentType">
+      </div>
     </div>
   </div>
   <div class="inner">
-    <textarea matInput placeholder="Description" [(ngModel)]="selectedItem.data.detailsLong"></textarea>
+    <div>
+      <textarea matInput placeholder="Description" [(ngModel)]="selectedItem.data.description"></textarea>
+    </div>
+    <div>
+      <textarea matInput placeholder="Responsibilities" [(ngModel)]="selectedItem.data.responsibilities"></textarea>
+    </div>
   </div>
 </div>

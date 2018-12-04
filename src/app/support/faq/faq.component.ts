@@ -11,6 +11,8 @@ export class FaqComponent extends ShowListBase<FAQ> {
   
   headerList: string[];
 
+  faqSchema: any[];
+
   getType() { return FAQ.prototype }
 
   onListUpdate() {
@@ -27,6 +29,18 @@ export class FaqComponent extends ShowListBase<FAQ> {
         this.headerList.push(doc.section);
         tmpHeader = doc.section;
       }
+    }
+    this.faqSchema = [];
+    for (let faq of this.availableDocs) {
+      this.faqSchema.push({
+        '@context': 'http://schema.org',
+        '@type': 'Question',
+        'name': faq.question,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': faq.answer  
+        }
+      })
     }
   }
 

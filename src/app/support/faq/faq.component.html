@@ -1,4 +1,4 @@
-<div *ngFor="let header of headerList">
+<div *ngFor="let header of headerList; let i = index">
   <h2>{{ header }}</h2>
   <br>
   <div *ngFor="let doc of filterBy(header)">
@@ -6,4 +6,5 @@
     <br>
     {{ doc.answer }}
   </div>
+  <ngx-json-ld [json]="faqSchema[i]"></ngx-json-ld>
 </div>

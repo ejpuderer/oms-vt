@@ -11,10 +11,24 @@ export class BlogComponent extends ShowListBase<Blog> {
   
   getType() { return Blog.prototype }
 
+  blogSchema = {
+
+  }
+
+  postingSchema: any[];
+
   onListUpdate() { 
     this.expandedView = [];
-    for (let doc of this.availableDocs) {
-      this.expandedView.push(false);
+    this.expandedView.fill(false, 0, this.availableDocs.length);
+    this.postingSchema = [];
+    for (let blog of this.availableDocs) {
+      this.postingSchema.push({
+        '@context': 'http://schema.org',
+        '@type': 'BlogPosting',
+        'datePublished': blog.blogDate,
+        'headline': blog.title,
+        'articleBody': blog.contents
+      })
     }
   }
 

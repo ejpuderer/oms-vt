@@ -1,3 +1,22 @@
-<p>
-  addessess works!
-</p>
+<div *ngIf="userDoc">
+    <section *ngFor="let address of userDoc.addressList; let i = index">
+        <ng-container *ngTemplateOutlet="addrPanel;context:{index: i, address: address}"></ng-container>
+    </section>
+</div>
+
+<ng-template #addrPanel let-index="index" let-address="address">
+    <input matInput placeholder="Consignee" [(ngModel)]="address.consignee">
+    <input matInput placeholder="Building" [(ngModel)]="address.building">
+    <input matInput placeholder="Phone" [(ngModel)]="address.phone">
+    <input matInput placeholder="Address Line 1" [(ngModel)]="address.addrLine1">
+    <input matInput placeholder="Address Line 2" [(ngModel)]="address.addrLine2">
+    <input matInput placeholder="Address Line 3" [(ngModel)]="address.addrLine3">
+    <input matInput placeholder="City" [(ngModel)]="address.city">
+    <input matInput placeholder="State" [(ngModel)]="address.state" max="2">
+    <input matInput placeholder="ZIP" [(ngModel)]="address.zip" max="5">
+    <textarea matInput placeholder="Additional Instructions" [(ngModel)]="address.addlInstr"></textarea>
+    <button *ngIf="index==0" mat-button class="add-button" (click)="addAddress()">Add</button>
+    <button *ngIf="index > 0" mat-button class="update-button" (click)="updateAddress()">Update</button>
+    <button *ngIf="index > 0" mat-button class="remove-button" (click)="deleteAddress(index)">Delete</button>
+    <button mat-button class="clear-button" (click)="clearAddress(index)">Clear</button>
+</ng-template>

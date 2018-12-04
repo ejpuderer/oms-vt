@@ -5,6 +5,8 @@ import { OrderHistory } from 'src/app/models/orderHistory.model';
 import { Order } from 'src/app/models/order.model';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { AddressList } from 'src/app/models/addressList.model';
+import { Address } from 'src/app/models/address.model';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -15,20 +17,21 @@ export class ShoppingCartComponent implements OnInit {
 
   userId: String;
   shoppingCart: CartItem[];
+  addressList: AddressList;
   orderHistory: OrderHistory;
+  shipTo: Address;
 
   constructor(private ecomService: EcommerceService, private router: Router) { }
 
   ngOnInit() {
-    console.log('shopping cart start')
     this.userId = this.ecomService.getAppService().getCookieService().get('uid');
-    console.log('userId: ' + this.userId);
     
     this.shoppingCart = this.ecomService.getCart();
     this.ecomService.shoppingCartSub.subscribe(
       (cart) => this.shoppingCart = cart
     )
     this.orderHistory = new OrderHistory(null);
+    this.addressList = new AddressList(null);
 
     if (this.userId) {
       this.ecomService.getAppService().getDocFromDB<OrderHistory>(OrderHistory.prototype, this.userId.toString()).subscribe(
@@ -44,11 +47,23 @@ export class ShoppingCartComponent implements OnInit {
           this.orderHistory.orders = tmpOrders;
         }
       )
+
+      this.ecomService.getAppService().getDocFromDB<AddressList>(AddressList.prototype, this.userId.toString()).subscribe(
+        (doc: AddressList) => {
+          const tmpAddr: Address[] = [];
+          if (doc) {
+            for (let addr of doc.addressList) {
+              tmpAddr.push(new Address(addr['address']));
+            }
+          }          
+          this.addressList.addressList = tmpAddr;
+        }
+      )
     }
   }
 
   submitOrder() {
-    this.orderHistory.orders.push(new Order({orderDate: new Date(), orderItems: this.shoppingCart }))
+    this.orderHistory.orders.push(new Order({orderDate: new Date(), shipTo: this.shipTo, orderItems: this.shoppingCart }))
     this.ecomService.getAppService().updateDatabase<OrderHistory>(this.userId.toString(), OrderHistory.prototype, 
       { orders: this.orderHistory.toJSON() }).then(
       () => {
@@ -66,6 +81,14 @@ export class ShoppingCartComponent implements OnInit {
 
   changeQuantity(index: number, quantity: number) {
     this.ecomService.changeQuantity(index, quantity);
+  }
+
+  getTotal() {
+    let total = 0;
+    for (let item of this.shoppingCart) {
+      total += item.quantity * item.item.price
+    }
+    return total;
   }
 
 }

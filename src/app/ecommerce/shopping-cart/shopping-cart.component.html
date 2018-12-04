@@ -2,6 +2,24 @@
   {{ cartItem.item.name }} - {{ cartItem.item.desc }}
   <br>Price: {{ cartItem.item.price }}
   <br>Quantity: {{ cartItem.quantity }}
-  <button mat-icon-button (click)="removeItem(i)"><mat-icon>remove_shopping_cart</mat-icon></button>
+  <button mat-icon-button (click)="removeItem(i)">
+    <mat-icon>remove_shopping_cart</mat-icon>
+  </button>
 </div>
-<button *ngIf="userId" (click)="submitOrder()">Place Order</button>
+<h4>Ship To selection</h4>
+<select size="6">
+  <option *ngFor="let addr of addressList.addressList" (click)="shipTo = addr">
+    {{ addr.addrLine1 }} {{ addr.city }} {{ addr.state }}, {{ addr.zip }}
+  </option>
+</select>
+
+<h4 *ngIf="!userId">Please log in to place orders</h4>
+
+<div *ngIf="userId">
+    <h4 *ngIf="addressList && addressList.addressList && (addressList.addressList.lenth == 0 || !shipTo)">A ship to is
+        required for order placement</h4>
+      <br>
+      Total: {{ getTotal() }}
+      <br>
+      <button *ngIf="shipTo" (click)="submitOrder()">Place Order</button>
+</div>

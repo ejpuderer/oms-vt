@@ -56,8 +56,8 @@
               <input matInput type="number" value="1" min="1" max="99" #itemQuantity>
             </div>
             <div>
+              Total: <b>{{ forSale.price * itemQuantity.value | number:'0.2' }}</b>
               <button mat-icon-button (click)="addToCart(forSale, itemQuantity.value)">
-                  Total: <b>{{ forSale.price * itemQuantity.value | number:'0.2' }}</b>
                 <mat-icon>add_shopping_cart</mat-icon>
               </button>
             </div>

@@ -1,17 +1,19 @@
-<div *ngIf="orderHistory">
+<div *ngIf="userDoc">
     Order History:
     <br>
-    <div *ngFor="let order of orderHistory.orders">
+    <div *ngFor="let order of userDoc.orders">
       Order Date: {{ order.orderDate | date }} 
+      <br>
+      Shipped To: {{ order.shipTo.addrLine1 }}
       <br>
       Items Purchased:
       <br>
-      <div *ngFor="let item of order.orderItems"><p>
+      <div *ngFor="let item of userDoc.orderItems"><p>
         {{ item.item.name }} - {{ item.item.desc }} <br>
         {{ item.quantity }} @ {{ item.item.price }} 
       </p></div>
     </div>
 </div>
-<div *ngIf="!orderHistory">
+<div *ngIf="!userDoc">
   No purchases have been made
 </div>

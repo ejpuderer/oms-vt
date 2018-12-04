@@ -17,8 +17,7 @@ export class OrderHistory extends BaseDBModel {
             for (let item of order.orderItems) {
                 cartItems.push({quantity: item.quantity, item: {...item.item}})
             }
-            console.log(cartItems);
-            jsonStr.push({orderDate: order.orderDate, orderItems: cartItems })
+            jsonStr.push({orderDate: order.orderDate, shipTo: { ...order.shipTo }, orderItems: cartItems })
         }
         return jsonStr;
     }

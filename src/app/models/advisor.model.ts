@@ -1,6 +1,6 @@
-import { BaseDBModel } from "./baseDB.model";
+import { ImageDBModel } from "./imageDB.model";
 
-export class Advisor extends BaseDBModel {
+export class Advisor extends ImageDBModel {
     
     public collectionName(): string {
         return "Advisor"

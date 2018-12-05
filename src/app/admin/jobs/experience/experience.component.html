@@ -1,0 +1,18 @@
+<div class="admin-row">
+  <div class="inner">
+    <select size="6">
+      <option *ngFor="let experience of jobValue.experienceRequirements; let i = index" (click)="selectedExp = experience; selectedIndex = i">
+        {{ experience }}
+      </option>
+    </select>
+  </div>
+  <div class="inner">
+    <input matInput placeholder="Experience" [(ngModel)]="selectedExp">
+    <div>
+      <button mat-button class="add-button" (click)="addExp()" *ngIf="selectedIndex == -1">Add</button>
+      <button mat-button class="update-button" *ngIf="selectedIndex > -1" (click)="updateExp(selectedIndex)">Update</button>
+      <button mat-button class="remove-button" *ngIf="selectedIndex > -1" (click)="deleteExp(selectedIndex)" color="warn">Remove</button>
+      <button mat-button class="clear-button" (click)="clear()">Clear</button>
+    </div>
+  </div>
+</div>

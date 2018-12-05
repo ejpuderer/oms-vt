@@ -14,6 +14,8 @@ import { SubTypeComponent } from './item-setup/sub-type/sub-type.component';
 import { ItemFormComponent } from './item-setup/item-form/item-form.component';
 import { PartnersComponent } from './partners/partners.component';
 import { TeamComponent } from './team/team.component';
+import { RequirementsComponent } from './jobs/requirements/requirements.component';
+import { ExperienceComponent } from './jobs/experience/experience.component';
 
 const adminRoute: Routes = [
   {
@@ -38,7 +40,9 @@ const adminRoute: Routes = [
       SubTypeComponent,
       ItemFormComponent,
       PartnersComponent,
-      TeamComponent
+      TeamComponent,
+      RequirementsComponent,
+      ExperienceComponent
     ],
     exports: [
       AdminComponent,

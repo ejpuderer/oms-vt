@@ -7,13 +7,13 @@ export class JobPosting extends BaseDBModel {
     }
 
     title: string;
-    salary: number;
+    salary: string;
     howSoon: string;
     description: String;
     datePosted: Date;
     employmentType: String;
-    experienceRequirements: String;
+    experienceRequirements: String[];
     educationRequirements: String;
-    responsibilities: String;
+    responsibilities: String[];
 
 }

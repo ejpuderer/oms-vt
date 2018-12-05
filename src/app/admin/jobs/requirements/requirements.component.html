@@ -1,0 +1,18 @@
+<div class="admin-row">
+  <div class="inner">
+    <select size="6">
+      <option *ngFor="let responsibility of jobValue.responsibilities; let i = index" (click)="selectedResp = responsibility; selectedIndex = i">
+        {{ responsibility }}
+      </option>
+    </select>
+  </div>
+  <div class="inner">
+    <input matInput placeholder="Responsibility" [(ngModel)]="selectedResp">
+    <div>
+      <button mat-button class="add-button" (click)="addResp()" *ngIf="selectedIndex == -1">Add</button>
+      <button mat-button class="update-button" *ngIf="selectedIndex > -1" (click)="updateResp(selectedIndex)">Update</button>
+      <button mat-button class="remove-button" *ngIf="selectedIndex > -1" (click)="deleteResp(selectedIndex)" color="warn">Remove</button>
+      <button mat-button class="clear-button" (click)="clear()">Clear</button>
+    </div>
+  </div>
+</div>

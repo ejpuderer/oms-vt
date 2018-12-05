@@ -37,14 +37,16 @@ export class JobPostingsComponent extends ShowListBase<JobPosting> {
         "description": job.description,
         "educationRequirements": job.educationRequirements,
         "employmentType": job.employmentType,
-        "experienceRequirements": job.experienceRequirements,
-        "responsibilities": job.responsibilities
+        "experienceRequirements": { ...job.experienceRequirements },
+        "responsibilities": { ...job.responsibilities }
       });
     }
   }
 
-  onModelUpdate(data: JobPosting) {
-    return new JobPosting(data);
+  onModelUpdate(data: any) {
+    const job = new JobPosting(data);
+    if (job.datePosted) job.datePosted = new Date(data["datePosted"].seconds * 1000);
+    return job;
   }
 
   expandClick(index: number) {

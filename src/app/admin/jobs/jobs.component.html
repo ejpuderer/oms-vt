@@ -19,13 +19,10 @@
         <input matInput placeholder="Education" [(ngModel)]="selectedItem.data.educationRequirements">
       </div>
       <div>
-        <input matInput placeholder="Experience" [(ngModel)]="selectedItem.data.experienceRequirements">
-      </div>
-      <div>
         <input matInput placeholder="How Soon" [(ngModel)]="selectedItem.data.howSoon">
       </div>
       <div>
-        <input matInput placeholder="How Soon" [matDatepicker]="JobDate" [(ngModel)]="selectedItem.data.datePosted">
+        <input matInput placeholder="Posting Date" [matDatepicker]="JobDate" [(ngModel)]="selectedItem.data.datePosted">
         <mat-datepicker-toggle [for]="JobDate"></mat-datepicker-toggle>
         <mat-datepicker #JobDate></mat-datepicker>
       </div>
@@ -38,8 +35,13 @@
     <div>
       <textarea matInput placeholder="Description" [(ngModel)]="selectedItem.data.description"></textarea>
     </div>
-    <div>
-      <textarea matInput placeholder="Responsibilities" [(ngModel)]="selectedItem.data.responsibilities"></textarea>
-    </div>
+  </div>
+</div>
+<div class="admin-row">
+  <div class="inner">
+    <app-experience [(job)]="selectedItem.data"></app-experience>
+  </div>
+  <div class="inner">
+    <app-requirements [(job)]="selectedItem.data"></app-requirements>
   </div>
 </div>

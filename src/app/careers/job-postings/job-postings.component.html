@@ -8,24 +8,26 @@
     <mat-expansion-panel>
         <mat-expansion-panel-header (click)="expandClick(index)" class="right-aligned-header">
           <mat-panel-title>
-            {{ job.title }} - {{ job.datePosted }}
+            {{ job.title }} - Posted: {{ job.datePosted | date}}
           </mat-panel-title>
           <mat-panel-description *ngIf="expandedView[index]">Click to shrink</mat-panel-description>
           <mat-panel-description *ngIf="!expandedView[index]">Click to expand</mat-panel-description>
         </mat-expansion-panel-header>
         
-  <p>How Soon - {{ job.howSoon }}</p>
-  <p>Salary - ${{ job.salary | number:'0.2' }}</p>
+  <p>How Soon - <b>{{ job.howSoon }}</b></p>
+  <p>Salary - <b>${{ job.salary }}</b></p>
   <p>Description: {{ job.description }}</p>
   <p>Employment Type: {{ job.employmentType }} </p>
-  <h4>Education Requirements</h4>
-  <p>
-    {{job.experienceRequirements}}
-  </p>
+  <h4>Responsibilities</h4>
+  <ul>
+    <li *ngFor="let resp of job.responsibilities">{{ resp }}</li>
+  </ul>
   <h4>Education Requirements</h4>
   <p>{{ job.educationRequirements }}</p>
-  <h4>Responsibilities</h4>
-  <p>{{ job.responsibilities }}</p>
+  <h4>Experience Requirements</h4>
+  <ul>
+    <li *ngFor="let exp of job.experienceRequirements">{{ exp }}</li>
+  </ul>
   <ngx-json-ld [json]="schema[index]"></ngx-json-ld>
 </mat-expansion-panel>
 </ng-template>

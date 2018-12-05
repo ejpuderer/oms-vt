@@ -14,7 +14,9 @@ export class JobsComponent extends DBListBasecomponent<JobPosting> {
   }
   
   onModelUpdate(data: any) {
-    return new JobPosting(data);
+    const job = new JobPosting(data);
+    if (job.datePosted) job.datePosted = new Date(data["datePosted"].seconds * 1000);
+    return job;
   }
 
 }

@@ -41,7 +41,7 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/'}
+  { path: '**', redirectTo: '/home'}
 ];
 
 @NgModule({

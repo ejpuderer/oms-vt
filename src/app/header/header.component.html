@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <div id="titleName" class="title">
-    <img src="./../../assets/logo.png" />
+    <img src="./../../assets/logo.png" [routerLink]="['/home']"/>
     <button mat-button [routerLink]="['/home']">Online Material Sourcing</button>
     <a href="https://www.linkedin.com/company/online-material-sourcing/" target="blank">
       <img src="./../../assets/linkedin.png" id="linkedIn"></a>
@@ -31,7 +31,6 @@
 </mat-toolbar>
 
 <mat-menu #home="matMenu">
-  <button mat-menu-item [routerLink]="['/']">Home</button>
   <button mat-menu-item [routerLink]="['/home/overview']">Overview</button>
   <button mat-menu-item [routerLink]="['/home/how-it-works']">How It Works</button>
   <button mat-menu-item [routerLink]="['/home/growth']">Growth</button>

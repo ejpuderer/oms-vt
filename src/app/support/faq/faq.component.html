@@ -2,9 +2,8 @@
   <h2>{{ header }}</h2>
   <br>
   <div *ngFor="let doc of filterBy(header)">
-    {{ doc.question }}
-    <br>
-    {{ doc.answer }}
+    <h4>{{ doc.question }}</h4>
+    <p>{{ doc.answer }}</p> 
   </div>
   <ngx-json-ld [json]="faqSchema[i]"></ngx-json-ld>
 </div>

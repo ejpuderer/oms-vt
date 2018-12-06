@@ -15,7 +15,7 @@
     </mat-expansion-panel-header>
     {{ blog.author }}
     <br>
-    <div [innerHTML]="blog.contents"></div>
+    <div [innerHTML]="blog.contents" class="text-heavy"></div>
     <ngx-json-ld [json]="postingSchema[index]"></ngx-json-ld>
   </mat-expansion-panel>  
 </ng-template>

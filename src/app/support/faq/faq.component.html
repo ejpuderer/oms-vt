@@ -1,7 +1,7 @@
 <div *ngFor="let header of headerList; let i = index">
   <h2>{{ header }}</h2>
   <br>
-  <div *ngFor="let doc of filterBy(header)">
+  <div *ngFor="let doc of filterBy(header)" class="text-heavy">
     <h4>{{ doc.question }}</h4>
     <p>{{ doc.answer }}</p> 
   </div>

@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { EcommerceComponent } from './ecommerce.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { EcommerceService } from './ecommerce.service';
+import { MoreInfoComponent } from './more-info/more-info.component';
 
 const ecommerceRoutes: Routes = [
     {
@@ -26,13 +27,15 @@ const ecommerceRoutes: Routes = [
     ],
     declarations: [
         EcommerceComponent,
-        ShoppingCartComponent
+        ShoppingCartComponent,
+        MoreInfoComponent
     ],
     exports: [
         RouterModule
     ],
     providers: [
         EcommerceService
-    ]
+    ],
+    entryComponents: [MoreInfoComponent]
 })
 export class EcommerceModule { }

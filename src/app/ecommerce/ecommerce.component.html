@@ -32,7 +32,7 @@
     </div>
   </mat-toolbar>
 
-  <mat-grid-list cols="3" rowHeight="300px" gutterSize="16">
+  <mat-grid-list [cols]="gridCols" rowHeight="300px" gutterSize="16">
     <mat-grid-tile *ngFor="let forSale of filteredForSale">
       <div class="grid-col">
         <div>
@@ -50,7 +50,7 @@
               <button mat-raised-button color="accent" *ngIf="userId" (click)="addToWishlist(forSale)">Add to Wishlist</button>
             </div>
             <div>
-              <button mat-raised-button color="primary">More Info</button>
+              <button mat-raised-button color="primary" (click)="openMoreInfo(forSale)">More Info</button>
             </div>
             <div>
               <input matInput type="number" value="1" min="1" max="99" #itemQuantity>

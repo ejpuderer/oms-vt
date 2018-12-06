@@ -1,0 +1,32 @@
+<div class="grid-col">
+  <div>
+    <img [src]="getImgSrc(dialogItem)">
+  </div>
+  <div>
+    <b>{{ dialogItem.name }}</b>
+  </div>
+  <div>
+    Desc: {{ dialogItem.desc }}
+  </div>
+  <div>
+    Primary Type: {{ dialogItem.type }}
+  </div>
+  <div>
+    SubType: {{ dialogItem.subtype }}
+  </div>
+  <div>
+    Form: {{ dialogItem.form }}
+  </div>
+  <div>
+    List Price ${{ dialogItem.price | number:'0.2' }}
+  </div>
+  <div>
+    <div class="grid-row">
+      <div>
+        <button mat-icon-button (click)="closeDialog()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,8 @@ import * as fromRoot from '../app.reducer';
 import { WishlistItem } from '../models/wishlistItem.model';
 import { EcommerceService } from './ecommerce.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { MoreInfoComponent } from './more-info/more-info.component';
 
 @Component({
   selector: 'app-ecommerce',
@@ -31,9 +33,10 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
   filteredForSale: ForSale[];
   userId: String;
   userWishList: Wishlist;
-
+  gridCols: number;
+  
   constructor(private store: Store<fromRoot.State>, appService: AppService,
-    private ecomService: EcommerceService, private router: Router) {
+    private ecomService: EcommerceService, private router: Router, public dialog: MatDialog) {
     super(appService);
   }
 
@@ -56,11 +59,13 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
         if (isAuth) {
           const uid = this.getAppService().getCookieService().get('uid');
           this.userId = uid;
+          this.gridCols = 3;
           this.getAppService().getDocFromDB<Wishlist>(Wishlist.prototype, uid).subscribe(
             (doc) => this.userWishList = new Wishlist(doc)
           );
         } else {
           this.userId = null;
+          this.gridCols = 4;
         }
 
       }
@@ -139,4 +144,14 @@ export class EcommerceComponent extends ShowListBase<ForSale> {
     return null;
   }
 
+  openMoreInfo(forSale) {
+    const dialogRef = this.dialog.open(MoreInfoComponent, {
+      width: '500px',
+      data: {forSale: forSale }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
 }

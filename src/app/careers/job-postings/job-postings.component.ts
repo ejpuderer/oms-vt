@@ -23,6 +23,7 @@ export class JobPostingsComponent extends ShowListBase<JobPosting> {
   getType() { return JobPosting.prototype }
 
   onListUpdate() {
+    this.availableDocs.sort((a, b) => b.datePosted.getTime() - a.datePosted.getTime())
     this.expandedView = [];
     this.expandedView.fill(false, 0, this.availableDocs.length);
     this.schema = [];

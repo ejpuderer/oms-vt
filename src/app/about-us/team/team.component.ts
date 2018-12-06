@@ -13,7 +13,13 @@ export class TeamComponent extends ShowListBase<TeamMember> {
     return TeamMember.prototype;
   }  
   
-  onListUpdate() { }
+  onListUpdate() {
+    this.availableDocs.sort((a, b) => {
+      if(a.firstName < b.firstName) { return -1; }
+      if(a.firstName > b.firstName) { return 1; }
+      return 0;
+    })
+   }
   
   onModelUpdate(data: any): TeamMember {
     return new TeamMember(data);

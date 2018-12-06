@@ -21,6 +21,7 @@ export class BlogComponent extends ShowListBase<Blog> {
     this.expandedView = [];
     this.expandedView.fill(false, 0, this.availableDocs.length);
     this.postingSchema = [];
+    this.availableDocs.sort((a, b) => b.blogDate.getTime() - a.blogDate.getTime())
     for (let blog of this.availableDocs) {
       this.postingSchema.push({
         '@context': 'http://schema.org',
